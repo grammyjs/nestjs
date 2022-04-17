@@ -44,5 +44,12 @@ The `packages/sample-echo-bot` is fully functioning and can be run with a bot to
 ## Projects Included
 
 -   [@grammy/nest](packages/grammy-nestjs) - The NestJS / grammY plugin source code
-
 -   [sample-echo-bot](packages/sample-echo-bot) - a sample echo-bot written in NestJS
+
+## Building
+
+To build:
+
+```sh
+yarn nx run grammy-nestjs:build
+```
