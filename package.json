@@ -1,7 +1,7 @@
 {
   "name": "@grammy/nestjs",
   "description": "grammY module for NestJS",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": {
     "name": "Mike Crowe",
     "email": "drmikecrowe@gmail.com"
@@ -50,7 +50,7 @@
     "jest": "27.2.3",
     "lint-staged": "^12.3.8",
     "ngrok": "^4.3.1",
-    "nx": "13.10.2",
+    "nx": "^13.10.2",
     "patch-package": "^6.4.7",
     "postinstall-postinstall": "^2.1.0",
     "prettier": "^2.5.1",

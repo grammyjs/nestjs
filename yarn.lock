@@ -5280,7 +5280,7 @@ nx@12.10.1:
   dependencies:
     "@nrwl/cli" "*"
 
-nx@13.10.2:
+nx@13.10.2, nx@^13.10.2:
   version "13.10.2"
   resolved "https://registry.yarnpkg.com/nx/-/nx-13.10.2.tgz#4e0227233cb5c468ce99cfba53a8773439a12de4"
   integrity sha512-6ac/7DO66asndgsMVC+YR5oa0jfEmmXjmE19gvIuAJtii00dSKd6o+n1G8lbl8RPZcz43wVY0zwV/eMpCSNFXw==
