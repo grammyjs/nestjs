@@ -1,4 +1,4 @@
-# Grammy port of NestJS Telegraf
+# grammY port of NestJS Telegraf
 
 > :information_source: This project would not be possible without the help and assistance of [Aleksandr Bukhalo](https://t.me/bukhalo_a) and the fantastic [bukhalo/nestjs-telegraf](https://github.com/bukhalo/nestjs-telegraf) project.
 
@@ -15,3 +15,7 @@ To test out this repo:
 ```sh
 DEBUG=bot:*,nestjs-grammy:* nx run sample-echo-bot:serve
 ```
+
+## Demonstration
+
+![demonstration](example.gif)

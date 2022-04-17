@@ -1,4 +1,4 @@
-# Grammy port of NestJS Telegraf
+# grammY port of NestJS Telegraf
 
 > :information_source: This project would not be possible without the help and assistance of [Aleksandr Bukhalo](https://t.me/bukhalo_a) and the fantastic [bukhalo/nestjs-telegraf](https://github.com/bukhalo/nestjs-telegraf) project.
 
@@ -12,7 +12,7 @@ This project was generated using [Nx](https://nx.dev).
 
 ## ⚠️ ALPHA STATUS DISCLAIMER
 
-> This project is both my first Grammy plugin and first NestJS project as well -- please be patient -- @drmikecrowe
+> This project is both my first grammY plugin and first NestJS project as well -- please be patient -- @drmikecrowe
 
 ### Alpha Status Implications
 
@@ -23,6 +23,8 @@ This project was generated using [Nx](https://nx.dev).
 
 -   [ ] Finish setting up nx build/release of `@grammy/nest` including permission delegation
 -   [ ] Finalize decorator API functions and documentation
+-   [ ] Determine node version support and limitations
+-   [ ] Testing, Testing, Testing (need unit testsgram)
 
 ### Testing
 
@@ -41,6 +43,6 @@ The `packages/sample-echo-bot` is fully functioning and can be run with a bot to
 
 ## Projects Included
 
--   [@grammy/nest](packages/grammy-nestjs/README.md) - The NestJS / Grammy plugin source code
+-   [@grammy/nest](packages/grammy-nestjs) - The NestJS / grammY plugin source code
 
--   [sample-echo-bot](packages/sample-echo-bot/README.md) - a sample echo-bot written in NestJS
+-   [sample-echo-bot](packages/sample-echo-bot) - a sample echo-bot written in NestJS

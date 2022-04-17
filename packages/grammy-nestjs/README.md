@@ -1,15 +1,15 @@
-# Grammy port of NestJS Telegraf
+# grammY port of NestJS Telegraf
 
 > :information_source: This project would not be possible without the help and assistance of [Aleksandr Bukhalo](https://t.me/bukhalo_a) and the fantastic [bukhalo/nestjs-telegraf](https://github.com/bukhalo/nestjs-telegraf) project.
 
 ## Table of Contents
 
--   [Grammy port of NestJS Telegraf](#grammy-port-of-nestjs-telegraf)
+-   [grammY port of NestJS Telegraf](#grammy-port-of-nestjs-telegraf)
     -   [Table of Contents](#table-of-contents)
     -   [Features](#features)
     -   [Installation](#installation)
     -   [Usage](#usage)
-    -   [Grammy instance access](#grammy-instance-access)
+    -   [grammY instance access](#grammy-instance-access)
     -   [Asynchronous Configuration](#asynchronous-configuration)
     -   [Getting Updates](#getting-updates)
         -   [Long polling](#long-polling)
@@ -23,9 +23,9 @@
 <img align="right" width="95" height="148" title="NestJS logotype"
      src="https://nestjs.com/img/logo-small.svg">
 
-NestJS Grammy – powerful solution for creating Telegram bots.
+NestJS grammY – powerful solution for creating Telegram bots.
 
-This package uses the best of the NodeJS world under the hood. [Grammy](https://github.com/grammyjs/grammY) is the most powerful library for creating bots and [NestJS](https://github.com/nestjs) is a progressive framework for creating well-architectured applications. This module provides fast and easy way for creating Telegram bots and deep integration with your NestJS application.
+This package uses the best of the NodeJS world under the hood. [grammY](https://github.com/grammyjs/grammY) is the most powerful library for creating bots and [NestJS](https://github.com/nestjs) is a progressive framework for creating well-architectured applications. This module provides fast and easy way for creating Telegram bots and deep integration with your NestJS application.
 
 ## Features
 
@@ -33,7 +33,7 @@ This package uses the best of the NodeJS world under the hood. [Grammy](https://
 -   Ton of decorators available out of the box for handling bot actions.
 -   Ability to create custom decorators.
 -   Scenes support.
--   Grammy plugins and custom plugins support.
+-   grammY plugins and custom plugins support.
 -   Ability to run multiple bots simultaneously.
 -   Full support of NestJS guards, interceptors, filters and pipes!
 
@@ -106,9 +106,9 @@ export class EchoUpdate {
 }
 ```
 
-## Grammy instance access
+## grammY instance access
 
-If you want to use `Grammy` instance directly, you can use `@InjectBot` for that.
+If you want to use `grammY` instance directly, you can use `@InjectBot` for that.
 
 ```typescript
 import { Injectable } from '@nestjs/common'

@@ -1,17 +1,19 @@
 {
-  "name": "@grammy/nest",
-  "description": "Grammy module for NestJS",
+  "name": "@grammy/nestjs",
+  "description": "grammY module for NestJS",
   "version": "0.0.1",
   "author": {
     "name": "Mike Crowe",
     "email": "drmikecrowe@gmail.com"
   },
+  "bugs": "https://github.com/grammyjs/nestjs/issues",
   "contributors": [
     {
       "name": "Arthur Asimov",
       "email": "arthur.asimov.z0@gmail.com"
     }
   ],
+  "homepage": "https://github.com/grammyjs/nestjs#README.md",
   "keywords": [
     "bot",
     "bot api",
@@ -24,6 +26,7 @@
     "telegram bot",
     "telegram bot api"
   ],
+  "license": "MIT",
   "peerDependencies": {
     "@nestjs/common": "^8.0.0",
     "@nestjs/core": "^8.0.0",
@@ -35,5 +38,6 @@
     "source-map-support": "^0.5.21",
     "tslib": "^2.0.0"
   },
+  "repository": "grammyjs/nestjs",
   "type": "commonjs"
 }

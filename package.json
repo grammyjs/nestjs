@@ -1,11 +1,12 @@
 {
-  "name": "grammy-nestjs",
-  "description": "Grammy module for NestJS",
-  "version": "0.0.2",
+  "name": "@grammy/nestjs",
+  "description": "grammY module for NestJS",
+  "version": "0.0.1",
   "author": {
     "name": "Mike Crowe",
     "email": "drmikecrowe@gmail.com"
   },
+  "bugs": "https://github.com/grammyjs/nestjs/issues",
   "contributors": [
     {
       "name": "Arthur Asimov",
@@ -118,6 +119,7 @@
       }
     ]
   },
+  "homepage": "https://github.com/grammyjs/nestjs#README.md",
   "keywords": [
     "bot",
     "bot api",
@@ -137,7 +139,7 @@
     ]
   },
   "prettier": "@drmikecrowe/prettier-config",
-  "private": true,
+  "repository": "grammyjs/nestjs",
   "scripts": {
     "format": "prettier --loglevel warn --write \"*.js,*.ts\"",
     "lint": "eslint . --cache --fix",
