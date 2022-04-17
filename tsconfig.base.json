@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@grammy/nest": ["packages/grammy-nestjs/src/index.ts"]
+      "@grammyjs/nestjs": ["packages/grammy-nestjs/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -5,7 +5,7 @@ import { UseFilters, UseGuards, UseInterceptors } from '@nestjs/common'
 import { EchoService } from './echo.service'
 import { EchoBotName } from './echo.constants'
 import { Bot, Context } from 'grammy'
-import { InjectBot, Update, Message, Start, Hears, Ctx, Help, Admin } from '@grammy/nest'
+import { InjectBot, Update, Message, Start, Hears, Ctx, Help, Admin } from '@grammyjs/nestjs'
 import { AdminGuard, ReverseTextPipe, GrammyExceptionFilter, ResponseTimeInterceptor } from './lib'
 
 @Update()

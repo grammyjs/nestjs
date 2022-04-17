@@ -3,7 +3,7 @@ const log = debug('bot:echo.service')
 
 import { Injectable } from '@nestjs/common'
 import { Bot, Context } from 'grammy'
-import { InjectBot } from '@grammy/nest'
+import { InjectBot } from '@grammyjs/nestjs'
 import { EchoBotName } from './echo.constants'
 
 @Injectable()
