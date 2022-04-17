@@ -27,6 +27,13 @@
         "jestConfig": "packages/grammy-nestjs/jest.config.js",
         "passWithNoTests": true
       }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "npm publish --access public"
+      }
     }
   },
   "tags": []
