@@ -32,7 +32,7 @@
       "executor": "@nrwl/workspace:run-commands",
       "outputs": [],
       "options": {
-        "command": "npm publish --tag=latest --access public"
+        "command": "npm publish --access public"
       }
     }
   },
