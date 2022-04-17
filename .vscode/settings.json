@@ -1,0 +1,6 @@
+{
+  "markdownlint.config": {
+    "list-marker-space": false,
+    "ul-indent": false
+  }
+}

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+. "$(dirname "$0")/_/husky.sh"
+
+if [ "$3" == "0" ]; then exit; fi
+if [ "$3" == "1" ]; then yarn --frozen-lockfile; fi
+
+# git rebase fails here so turn off errors while we check branch
+set +e
+BRANCH_NAME=$(git symbolic-ref --short -q HEAD)
+set -e
+if [ "$?" == "0" -a "$BRANCH_NAME" != "" ]; then
+  NUM_CHECKOUTS=`git reflog --date=local | grep -o ${BRANCH_NAME} | wc -l`
+
+  #if the refs of the previous and new heads are the same
+  #AND the number of checkouts equals one, a new branch has been created
+  if [ "$BRANCH_NAME" != "master" ] && [ "$1" == "$2"  ] && [ ${NUM_CHECKOUTS} -eq 1 ]; then
+      yarn version --patch --no-git-tag-version
+  fi
+fi
