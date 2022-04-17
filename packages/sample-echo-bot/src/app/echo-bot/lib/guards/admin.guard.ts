@@ -1,5 +1,5 @@
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common'
-import { GrammyExecutionContext, GrammyException } from '@grammy/nest'
+import { GrammyExecutionContext, GrammyException } from '@grammyjs/nestjs'
 import { Context } from 'grammy'
 
 @Injectable()

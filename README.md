@@ -21,7 +21,7 @@ This project was generated using [Nx](https://nx.dev).
 
 ### Pre-Release Action Items
 
--   [ ] Finish setting up nx build/release of `@grammy/nest` including permission delegation
+-   [ ] Finish setting up nx build/release of `@grammyjs/nest` including permission delegation
 -   [ ] Finalize decorator API functions and documentation
 -   [ ] Determine node version support and limitations
 -   [ ] Testing, Testing, Testing (need unit testsgram)
@@ -43,7 +43,7 @@ The `packages/sample-echo-bot` is fully functioning and can be run with a bot to
 
 ## Projects Included
 
--   [@grammy/nest](packages/grammy-nestjs) - The NestJS / grammY plugin source code
+-   [@grammyjs/nest](packages/grammy-nestjs) - The NestJS / grammY plugin source code
 -   [sample-echo-bot](packages/sample-echo-bot) - a sample echo-bot written in NestJS
 
 ## Building
@@ -52,4 +52,12 @@ To build:
 
 ```sh
 yarn nx run grammy-nestjs:build
+```
+
+## Deploying
+
+To deploy:
+
+```sh
+yarn nx run grammy-nestjs:publish
 ```

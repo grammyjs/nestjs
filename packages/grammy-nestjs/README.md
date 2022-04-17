@@ -40,9 +40,9 @@ This package uses the best of the NodeJS world under the hood. [grammY](https://
 ## Installation
 
 ```bash
-npm i @grammy/nest
+npm i @grammyjs/nestjs
 # or
-yarn add @grammy/nest
+yarn add @grammyjs/nestjs
 ```
 
 ## Usage
@@ -51,7 +51,7 @@ Once the installation process is complete, we can import the `NestjsGrammyModule
 
 ```typescript
 import { Module } from '@nestjs/common'
-import { NestjsGrammyModule } from '@grammy/nest'
+import { NestjsGrammyModule } from '@grammyjs/nestjs'
 
 @Module({
     imports: [
@@ -67,7 +67,7 @@ Then create `app.update.ts` file and add some decorators for handling Telegram b
 
 ```typescript
 import { Bot, Context } from 'grammy'
-import { InjectBot, Update, Message, Start, Hears, Ctx, Help, Admin } from '@grammy/nest'
+import { InjectBot, Update, Message, Start, Hears, Ctx, Help, Admin } from '@grammyjs/nestjs'
 
 @Update()
 @UseInterceptors(ResponseTimeInterceptor)
@@ -113,7 +113,7 @@ If you want to use `grammY` instance directly, you can use `@InjectBot` for that
 ```typescript
 import { Injectable } from '@nestjs/common'
 import { Bot, Context } from 'grammy'
-import { InjectBot } from '@grammy/nest'
+import { InjectBot } from '@grammyjs/nestjs'
 
 @Injectable()
 export class EchoService {

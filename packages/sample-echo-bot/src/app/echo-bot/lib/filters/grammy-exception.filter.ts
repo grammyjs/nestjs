@@ -1,5 +1,5 @@
 import { ArgumentsHost, Catch, ExceptionFilter } from '@nestjs/common'
-import { GrammyArgumentsHost } from '@grammy/nest'
+import { GrammyArgumentsHost } from '@grammyjs/nestjs'
 import { Context } from 'grammy'
 
 @Catch()
