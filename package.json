@@ -1,7 +1,7 @@
 {
   "name": "@grammyjs/nestjs",
   "description": "grammY module for NestJS",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": {
     "name": "Mike Crowe",
     "email": "drmikecrowe@gmail.com"
@@ -18,7 +18,7 @@
     "@nestjs/core": "^8.0.0",
     "@nestjs/platform-express": "^8.0.0",
     "debug": "^4.3.4",
-    "grammy": "^1.7.3",
+    "grammy": "^1.8.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.0.0",
     "source-map-support": "^0.5.21",
