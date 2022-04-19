@@ -30,9 +30,16 @@
     },
     "publish": {
       "executor": "@nrwl/workspace:run-commands",
-      "outputs": [],
       "options": {
-        "command": "npm publish --access public"
+        "commands": [
+          {
+            "command": "nx run grammy-nestjs:build"
+          },
+          {
+            "command": "cd dist/packages/grammy-nestjs && npm publish --access public --otp $(echo -n 'Authenticator code: '; read a && echo $a)"
+          }
+        ],
+        "parallel": false
       }
     }
   },
