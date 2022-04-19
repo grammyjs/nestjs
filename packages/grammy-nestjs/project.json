@@ -36,7 +36,7 @@
             "command": "nx run grammy-nestjs:build"
           },
           {
-            "command": "cd dist/packages/grammy-nestjs && npm publish --access public --otp $(echo -n 'Authenticator code: '; read a && echo $a)"
+            "command": "cd dist/packages/grammy-nestjs && echo -n 'Authenticator code: ' && npm publish --access public --otp $(read a && echo $a)"
           }
         ],
         "parallel": false
