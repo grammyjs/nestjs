@@ -17,12 +17,14 @@ if [ "$1" == "start" ]; then
     --header 'Accept: */*' \
     --header 'User-Agent: Thunder Client (https://www.thunderclient.com)' | \
     jq -r '.tunnels[0].public_url')
-  sed -i "s@WEBHOOK_URL.*@WEBHOOK_URL=\"${URL}/$FIREBASE_PROJECT/$REGION/bot/webhook\"@" $SCRIPT_DIR/.env
+  sed -i "s@WEBHOOK_URL.*@WEBHOOK_URL=\"${URL}/$FIREBASE_PROJECT/$REGION/bot/webhook\"@" $SCRIPT_DIR/src/.env
+  cp $SCRIPT_DIR/src/.env $TOP_DIR
 elif [ "$1" == "stop" ]; then
   curl -sX DELETE \
     'http://localhost:4040/api/tunnels/grammy' \
     --header 'Accept: */*' \
     --header 'User-Agent: Thunder Client (https://www.thunderclient.com)'
   killall ngrok
-  sed -i "s@WEBHOOK_URL.*@WEBHOOK_URL=@" $SCRIPT_DIR/.env
+  sed -i "s@WEBHOOK_URL.*@WEBHOOK_URL=@" $SCRIPT_DIR/src/.env
+  rm $TOP_DIR/.env
 fi

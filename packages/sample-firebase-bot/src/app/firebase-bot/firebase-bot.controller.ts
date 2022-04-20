@@ -6,7 +6,6 @@ import { FirebaseBotService } from './firebase-bot.service'
 
 import debug from 'debug'
 const log = debug('bot:firebase-bot.controller')
-log.log = console.log.bind(console)
 
 @Controller()
 export class FirebaseBotController {
@@ -25,12 +24,11 @@ export class FirebaseBotController {
 
   @Put('/commands/:action')
   async putSomething(@Param('action') action: string): Promise<void> {
+    log(`Received ${action}`)
     // TODO: authorize
     switch (action) {
       case 'show':
         return this.appService.botInfo()
-      case 'getMe':
-        return this.appService.getMe()
     }
   }
 }

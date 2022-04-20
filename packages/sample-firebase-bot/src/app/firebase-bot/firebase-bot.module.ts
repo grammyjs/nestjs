@@ -11,6 +11,6 @@ import { webhookCallback } from 'grammy'
 })
 export class FirebaseBotModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(webhookCallback).forRoutes('bot')
+    consumer.apply(webhookCallback).forRoutes('bot/webhook')
   }
 }

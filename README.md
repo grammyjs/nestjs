@@ -61,3 +61,15 @@ To deploy:
 ```sh
 yarn nx run grammy-nestjs:publish
 ```
+
+## Firebase Emulation
+
+> :warning: **Firebase Emulation Only** You may need to link `@grammyjs/nestjs` to this project. For example:
+
+```sh
+nx run grammy-nestjs:build
+pushd dist/packages/grammy-nestjs/
+yarn link
+popd
+yarn link @grammyjs/nestjs
+```

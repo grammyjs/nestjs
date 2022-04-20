@@ -22,19 +22,24 @@
     "getconfig": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
-        "command": "DEBUG= firebase functions:config:get --config firebase.sample-firebase-bot.json > packages/sample-firebase-bot/.runtimeconfig.json"
+        "command": "firebase functions:config:get --config firebase.sample-firebase-bot.json > .runtimeconfig.json"
       }
     },
     "emulate": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
-        "command": "DEBUG= firebase emulators:start --config firebase.sample-firebase-bot.json --only firestore,functions --import=.firebaserc #--export-on-exit"
-      }
-    },
-    "emulate_debug": {
-      "executor": "@nrwl/workspace:run-commands",
-      "options": {
-        "command": "DEBUG=1 firebase emulators:start --config firebase.sample-firebase-bot.json --only firestore,functions --import=.firebaserc #--export-on-exit"
+        "commands": [
+          {
+            "command": "./packages/sample-firebase-bot/ngrok.sh start"
+          },
+
+          {
+            "command": "kill-port --port 9099,8080,5000,9199,9000,4000"
+          },
+          {
+            "command": "DEBUG= firebase emulators:start --config firebase.sample-firebase-bot.json --only firestore,functions --import=./tmp/firebase/ --export-on-exit=./tmp/firebase/"
+          }
+        ]
       }
     },
     "watch": {
@@ -46,6 +51,7 @@
         "outputFileName": "index.js",
         "tsConfig": "packages/sample-firebase-bot/tsconfig.app.json",
         "packageJson": "packages/sample-firebase-bot/package.json",
+        "assets": ["packages/sample-firebase-bot/src/.env"],
         "generatePackageJson": true,
         "watch": true
       }

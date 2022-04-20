@@ -9,6 +9,7 @@ import { FirebaseBotModule } from './firebase-bot/firebase-bot.module'
       botName: FirebaseBotName,
       options: { botInfo: JSON.parse(process.env.BOT_INFO) },
       token: process.env.BOT_TOKEN,
+      useWebhook: true,
       include: [FirebaseBotModule],
     }),
     FirebaseBotModule,
