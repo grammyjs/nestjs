@@ -6,7 +6,7 @@ export interface GrammyModuleOptions {
   botName?: string
   options?: Partial<BotConfig<any>>
   pollingOptions?: PollingOptions | false
-  webhookOptions?: ApiClientOptions | false
+  useWebhook?: boolean
   // eslint-disable-next-line @typescript-eslint/ban-types
   include?: Function[]
   middlewares?: ReadonlyArray<Middleware<any>>
