@@ -14,10 +14,9 @@ import * as functions from 'firebase-functions'
 import { CommandModule } from './app/command.module'
 import { WebhookModule } from './app/webhook.module'
 
-const { BOT_TOKEN, WEBHOOK_URL, BOT_INFO, DEBUG } = process.env
-log({ BOT_TOKEN, WEBHOOK_URL, BOT_INFO, DEBUG })
+const { BOT_TOKEN, BOT_INFO, DEBUG } = process.env
+log({ BOT_TOKEN, BOT_INFO, DEBUG })
 
-if (!WEBHOOK_URL) throw new Error(`Cannot start: No WEBHOOK_URL in environment`)
 if (!BOT_TOKEN) throw new Error(`Cannot start: No BOT_TOKEN in environment`)
 if (!BOT_INFO) throw new Error(`Cannot start: No BOT_INFO in environment`)
 

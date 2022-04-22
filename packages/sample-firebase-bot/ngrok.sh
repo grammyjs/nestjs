@@ -118,8 +118,8 @@ do_start() {
     die "Please start ngrok in another window using ${col_grn}ngrok start grammy${col_reset}"
   fi
 
-  # script_prefix
-  TOP_DIR="$(dirname $(dirname $script_prefix))"
+  SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+  TOP_DIR="$(dirname $(dirname $SCRIPT_DIR))"
 
   FIREBASE_PROJECT="$(jq -r .projects.default $TOP_DIR/.firebaserc)"
   REGION="us-central1"
@@ -135,6 +135,7 @@ do_start() {
     "https://api.telegram.org/bot${BOT_TOKEN}/setWebhook?url=$WEBHOOK" \
     --header 'Accept: */*' | jq .description)
   success "Telegram: ${col_grn}$STATUS${col_reset}"
+  cp $SCRIPT_DIR/src/.env $TOP_DIR/
 }
 
 do_stop() {
@@ -142,6 +143,7 @@ do_stop() {
     "https://api.telegram.org/bot${BOT_TOKEN}/setWebhook?url=" \
     --header 'Accept: */*' | jq .description)
   success "Telegram: ${col_grn}$STATUS${col_reset}"
+  rm $TOP_DIR/.env
 }
 
 do_status() {
