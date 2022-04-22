@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common'
-import { FirebaseBotName } from './firebase-bot/firebase-bot.constants'
+import { FirebaseBotName } from './bot/bot.constants'
 import { NestjsGrammyModule } from '@grammyjs/nestjs'
-import { FirebaseBotModule } from './firebase-bot/firebase-bot.module'
+import { FirebaseCommandModule } from './bot/command.module'
 
 @Module({
   imports: [
@@ -10,9 +10,9 @@ import { FirebaseBotModule } from './firebase-bot/firebase-bot.module'
       options: { botInfo: JSON.parse(process.env.BOT_INFO) },
       token: process.env.BOT_TOKEN,
       useWebhook: true,
-      include: [FirebaseBotModule],
+      include: [FirebaseCommandModule],
     }),
-    FirebaseBotModule,
+    FirebaseCommandModule,
   ],
 })
-export class AppModule {}
+export class CommandModule {}

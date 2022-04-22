@@ -1,6 +1,8 @@
 require('firebase-functions/lib/logger/compat')
 import 'source-map-support/register'
+
 import 'dotenv/config'
+
 import debug from 'debug'
 const log = debug('bot:main')
 
@@ -9,24 +11,28 @@ import { ExpressAdapter } from '@nestjs/platform-express'
 import * as express from 'express'
 import * as functions from 'firebase-functions'
 
-import { AppModule } from './app/app.module'
+import { CommandModule } from './app/command.module'
+import { WebhookModule } from './app/webhook.module'
 
-const { WEBHOOK_URL, BOT_INFO, DEBUG } = process.env
-log({ WEBHOOK_URL, BOT_INFO, DEBUG })
+const { BOT_TOKEN, WEBHOOK_URL, BOT_INFO, DEBUG } = process.env
+log({ BOT_TOKEN, WEBHOOK_URL, BOT_INFO, DEBUG })
 
 if (!WEBHOOK_URL) throw new Error(`Cannot start: No WEBHOOK_URL in environment`)
+if (!BOT_TOKEN) throw new Error(`Cannot start: No BOT_TOKEN in environment`)
 if (!BOT_INFO) throw new Error(`Cannot start: No BOT_INFO in environment`)
 
 const expressServer = express()
 
-const createFunction = async (expressInstance): Promise<void> => {
-  log('Starting to create the function')
-  const app = await NestFactory.create(AppModule, new ExpressAdapter(expressInstance))
-  app.use(express.json())
+export const command = functions.https.onRequest(async (request, response) => {
+  log('Starting to create the CommandModule function')
+  const app = await NestFactory.create(CommandModule, new ExpressAdapter(expressServer))
   await app.init()
-}
+  expressServer(request, response)
+})
 
-export const bot = functions.region('us-central1').https.onRequest(async (request, response) => {
-  await createFunction(expressServer)
+export const webhook = functions.https.onRequest(async (request, response) => {
+  log('Starting to create the WebhookModule function')
+  const app = await NestFactory.create(WebhookModule, new ExpressAdapter(expressServer))
+  await app.init()
   expressServer(request, response)
 })

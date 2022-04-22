@@ -8,7 +8,7 @@ import {
   APP_CONFIG_ID,
   BOT_CONFIG_ID,
   CONFIG_COLLECTION_NAME,
-} from './models/Config'
+} from '../models/Config'
 import { db } from './firebase'
 
 export class FirestoreUtils {

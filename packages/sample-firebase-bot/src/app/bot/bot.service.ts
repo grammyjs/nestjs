@@ -5,7 +5,7 @@ const log = debug('bot:firebase-bot.service')
 
 import { Injectable } from '@nestjs/common'
 import { Bot, Context } from 'grammy'
-import { FirebaseBotName } from './firebase-bot.constants'
+import { FirebaseBotName } from './bot.constants'
 import { InjectBot } from '@grammyjs/nestjs'
 
 // import { FirestoreUtils } from '../common/FirestoreUtils'
@@ -20,6 +20,6 @@ export class FirebaseBotService {
   }
 
   botInfo(): void {
-    log(`FirebaseBotService!`, this.bot.botInfo)
+    log(`FirebaseBotService!`, this.bot.botInfo.first_name)
   }
 }

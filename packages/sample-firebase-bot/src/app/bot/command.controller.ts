@@ -1,28 +1,23 @@
-import { Controller, Param, Post, Put, Body } from '@nestjs/common'
+import { Controller, Param, Put } from '@nestjs/common'
 import { Bot, Context } from 'grammy'
-import { FirebaseBotName } from './firebase-bot.constants'
+import { FirebaseBotName } from './bot.constants'
 import { InjectBot } from '@grammyjs/nestjs'
-import { FirebaseBotService } from './firebase-bot.service'
+import { FirebaseBotService } from './bot.service'
 
 import debug from 'debug'
 const log = debug('bot:firebase-bot.controller')
 
 @Controller()
-export class FirebaseBotController {
+export class FirebaseCommandController {
   constructor(
     @InjectBot(FirebaseBotName)
     private readonly bot: Bot<Context>,
     private readonly appService: FirebaseBotService,
   ) {
-    log(`We are starting the FirebaseBotController!`, bot.isInited() ? bot.botInfo : '(pending)')
+    log(`We are starting the FirebaseBotController!`, bot.isInited() ? bot.botInfo.first_name : '(pending)')
   }
 
-  @Post('/webhook')
-  async postSomething(@Body() webhookBody: any): Promise<void> {
-    log(`WEBHOOK POST:`, webhookBody, typeof webhookBody, this.bot)
-  }
-
-  @Put('/commands/:action')
+  @Put('/:action')
   async putSomething(@Param('action') action: string): Promise<void> {
     log(`Received ${action}`)
     // TODO: authorize

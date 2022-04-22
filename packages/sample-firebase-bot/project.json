@@ -37,7 +37,24 @@
             "command": "kill-port --port 9099,8080,5000,9199,9000,4000"
           },
           {
-            "command": "DEBUG= firebase emulators:start --config firebase.sample-firebase-bot.json --only firestore,functions --import=./tmp/firebase/ --export-on-exit=./tmp/firebase/"
+            "command": "DEBUG= firebase emulators:start --config firebase.sample-firebase-bot.json --only firestore,functions --import=./tmp/firebase/ --export-on-exit"
+          }
+        ]
+      }
+    },
+    "emulate:debug": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "./packages/sample-firebase-bot/ngrok.sh start"
+          },
+
+          {
+            "command": "kill-port --port 9099,8080,5000,9199,9000,4000"
+          },
+          {
+            "command": "DEBUG= firebase emulators:start --inspect-functions --config firebase.sample-firebase-bot.json --only firestore,functions --import=./tmp/firebase/ --export-on-exit"
           }
         ]
       }

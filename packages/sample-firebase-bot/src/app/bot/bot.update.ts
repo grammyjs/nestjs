@@ -1,23 +1,23 @@
 import debug from 'debug'
-const log = debug('bot:echo.update')
+const log = debug('bot:firebase-bot.update')
 
 import { UseFilters, UseGuards, UseInterceptors } from '@nestjs/common'
-import { EchoService } from './echo.service'
-import { EchoBotName } from './echo.constants'
 import { Bot, Context } from 'grammy'
+import { FirebaseBotService } from './bot.service'
+import { FirebaseBotName } from './bot.constants'
 import { InjectBot, Update, Message, Start, Hears, Ctx, Help, Admin } from '@grammyjs/nestjs'
 import { AdminGuard, ReverseTextPipe, GrammyExceptionFilter, ResponseTimeInterceptor } from './lib'
 
 @Update()
 @UseInterceptors(ResponseTimeInterceptor)
 @UseFilters(GrammyExceptionFilter)
-export class EchoUpdate {
+export class WebhookUpdater {
   constructor(
-    @InjectBot(EchoBotName)
+    @InjectBot(FirebaseBotName)
     private readonly bot: Bot<Context>,
-    private readonly echoService: EchoService,
+    private readonly botService: FirebaseBotService,
   ) {
-    log('echo update starting', this.bot ? this.bot.botInfo.first_name : '(booting)')
+    log(`Initializing`, bot.isInited() ? bot.botInfo.first_name : '(pending)')
   }
 
   @Start()
