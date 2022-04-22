@@ -25,6 +25,16 @@ This demo project is a proof-of-concept Firebase Function bot implementation. It
 -   `NGROK_TOKEN`
 -   `BOT_TOKEN`
 
+> :warning: **Firebase Emulation Only** You may need to link `@grammyjs/nestjs` to this project. For example:
+
+```sh
+nx run grammy-nestjs:build
+pushd dist/packages/grammy-nestjs/
+yarn link
+popd
+yarn link @grammyjs/nestjs
+```
+
 ## Commands
 
 To start/stop your webhook:
