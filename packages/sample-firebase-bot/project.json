@@ -1,0 +1,107 @@
+{
+  "root": "packages/sample-firebase-bot",
+  "sourceRoot": "packages/sample-firebase-bot/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/sample-firebase-bot",
+        "main": "packages/sample-firebase-bot/src/index.ts",
+        "tsConfig": "packages/sample-firebase-bot/tsconfig.app.json",
+        "packageJson": "packages/sample-firebase-bot/package.json"
+      }
+    },
+    "deploy": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "firebase deploy --config firebase.sample-firebase-bot.json"
+      }
+    },
+    "getconfig": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "firebase functions:config:get --config firebase.sample-firebase-bot.json > .runtimeconfig.json"
+      }
+    },
+    "emulate": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "./packages/sample-firebase-bot/ngrok.sh start"
+          },
+
+          {
+            "command": "kill-port --port 9099,8080,5000,9199,9000,4000"
+          },
+          {
+            "command": "DEBUG= firebase emulators:start --config firebase.sample-firebase-bot.json --only firestore,functions --import=./tmp/firebase/ --export-on-exit"
+          }
+        ]
+      }
+    },
+    "emulate:debug": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "./packages/sample-firebase-bot/ngrok.sh start"
+          },
+
+          {
+            "command": "kill-port --port 9099,8080,5000,9199,9000,4000"
+          },
+          {
+            "command": "DEBUG= firebase emulators:start --inspect-functions --config firebase.sample-firebase-bot.json --only firestore,functions --import=./tmp/firebase/ --export-on-exit"
+          }
+        ]
+      }
+    },
+    "watch": {
+      "executor": "@nrwl/node:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/sample-firebase-bot",
+        "main": "packages/sample-firebase-bot/src/index.ts",
+        "outputFileName": "index.js",
+        "tsConfig": "packages/sample-firebase-bot/tsconfig.app.json",
+        "packageJson": "packages/sample-firebase-bot/package.json",
+        "assets": ["packages/sample-firebase-bot/src/.env"],
+        "generatePackageJson": true,
+        "watch": true
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "nx run sample-firebase-bot:build && nx run sample-firebase-bot:build --watch"
+          },
+          {
+            "command": "nx run sample-firebase-bot:emulate"
+          }
+        ],
+        "parallel": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/sample-firebase-bot/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/sample-firebase-bot"],
+      "options": {
+        "jestConfig": "packages/sample-firebase-bot/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
