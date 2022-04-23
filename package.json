@@ -50,6 +50,7 @@
     "@typescript-eslint/parser": "~5.18.0",
     "eslint": "~8.12.0",
     "eslint-config-prettier": "8.1.0",
+    "eslint-plugin-jest": "^26.1.5",
     "husky": "^7.0.0",
     "jest": "27.2.3",
     "kill-port": "^1.6.1",
@@ -62,67 +63,6 @@
     "syncpack": "^6.2.1",
     "ts-jest": "27.0.5",
     "typescript": "~4.6.2"
-  },
-  "eslintConfig": {
-    "root": true,
-    "extends": [
-      "@drmikecrowe/eslint-config-prettier-typescript"
-    ],
-    "ignorePatterns": [
-      "**/*"
-    ],
-    "plugins": [
-      "@nrwl/nx"
-    ],
-    "overrides": [
-      {
-        "files": [
-          "*.ts",
-          "*.tsx",
-          "*.js",
-          "*.jsx"
-        ],
-        "rules": {
-          "@nrwl/nx/enforce-module-boundaries": [
-            "error",
-            {
-              "enforceBuildableLibDependency": true,
-              "allow": [],
-              "depConstraints": [
-                {
-                  "sourceTag": "*",
-                  "onlyDependOnLibsWithTags": [
-                    "*"
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      },
-      {
-        "files": [
-          "*.ts",
-          "*.tsx"
-        ],
-        "extends": [
-          "plugin:@nrwl/nx/typescript"
-        ],
-        "rules": {
-          "@typescript-eslint/no-explicit-any": 0
-        }
-      },
-      {
-        "files": [
-          "*.js",
-          "*.jsx"
-        ],
-        "extends": [
-          "plugin:@nrwl/nx/javascript"
-        ],
-        "rules": {}
-      }
-    ]
   },
   "homepage": "https://github.com/grammyjs/nestjs#README.md",
   "keywords": [
@@ -146,10 +86,11 @@
   "prettier": "@drmikecrowe/prettier-config",
   "repository": "grammyjs/nestjs",
   "scripts": {
-    "format": "prettier --loglevel warn --write \"*.js,*.ts\"",
-    "lint": "eslint . --cache --fix",
-    "posttest": "npm run format",
+    "format": "nx format:write",
+    "lint": "nx run-many --all --target=lint",
+    "posttest": "yarn format",
     "prepare": "husky install && sed -i 's@#!/bin/sh@#!/usr/bin/env bash@g' .husky/_/husky.sh && sed -i 's@sh -e@bash -e@g' .husky/_/husky.sh",
+    "test": "nx test",
     "pretest": "yarn lint"
   }
 }
