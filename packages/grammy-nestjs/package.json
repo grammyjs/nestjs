@@ -13,6 +13,9 @@
       "email": "arthur.asimov.z0@gmail.com"
     }
   ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "homepage": "https://github.com/grammyjs/nestjs#README.md",
   "keywords": [
     "bot",

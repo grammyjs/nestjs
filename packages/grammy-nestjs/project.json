@@ -28,25 +28,17 @@
         "passWithNoTests": true
       }
     },
-    "publish": {
-      "executor": "@nrwl/workspace:run-commands",
-      "options": {
-        "commands": [
-          {
-            "command": "nx run grammy-nestjs:build"
-          },
-          {
-            "command": "cd dist/packages/grammy-nestjs && echo -n 'Authenticator code: ' && npm publish --access public --otp $(read a && echo $a)"
-          }
-        ],
-        "parallel": false
-      }
-    },
     "version": {
       "executor": "@jscutlery/semver:version",
       "options": {
         "preset": "conventional",
         "commitMessageFormat": "chore(${projectName}): release version ${version}"
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public"
       }
     }
   },

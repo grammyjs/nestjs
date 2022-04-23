@@ -57,6 +57,7 @@
     "kill-port": "^1.6.1",
     "lint-staged": "^12.3.8",
     "ngrok": "^4.3.1",
+    "ngx-deploy-npm": "^3.1.7",
     "nx": "^13.10.2",
     "patch-package": "^6.4.7",
     "postinstall-postinstall": "^2.1.0",
@@ -94,6 +95,6 @@
     "test": "nx test",
     "pretest": "yarn lint",
     "publish:version": "nx run grammy-nestjs:version",
-    "publish:npm": "nx run grammy-nestjs:publish"
+    "publish:npm": "nx run grammy-nestjs:deploy --no-build"
   }
 }
