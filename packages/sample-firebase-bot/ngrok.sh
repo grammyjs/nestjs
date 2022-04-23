@@ -19,6 +19,9 @@ script_prefix=""
 script_basename=""
 install_package=""
 
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+TOP_DIR="$(dirname $(dirname $SCRIPT_DIR))"
+
 list_options() {
   ### Change the next lines to reflect which flags/options/parameters you need
   ### flag:   switch a flag 'on' / no value specified
@@ -117,9 +120,6 @@ do_start() {
   if [[ -z $PID ]]; then
     die "Please start ngrok in another window using ${col_grn}ngrok start grammy${col_reset}"
   fi
-
-  SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-  TOP_DIR="$(dirname $(dirname $SCRIPT_DIR))"
 
   FIREBASE_PROJECT="$(jq -r .projects.default $TOP_DIR/.firebaserc)"
   REGION="us-central1"
