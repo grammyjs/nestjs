@@ -1,10 +1,10 @@
 import { Composer, FilterQuery } from 'grammy'
-import { ComposerMethodArgs, StringOrRegexQuery, EmitterQuery, CommandQuery } from '../types/grammy-types'
+import { ComposerMethodArgs, StringOrRegexQuery, BotQuery, CommandQuery } from '../types/grammy-types'
 import { LISTENERS_METADATA } from '../nestjs-grammy.constants'
 import { ListenerMetadata } from '../interfaces'
 
-export function createEmitterDecorator<TComposer extends Composer<never>, TSearch extends EmitterQuery>(
-  emitter: EmitterQuery,
+export function createBotDecorator<TComposer extends Composer<never>, TSearch extends BotQuery>(
+  emitter: BotQuery,
   method?: CommandQuery,
 ) {
   return (search?: FilterQuery | StringOrRegexQuery, ...args: ComposerMethodArgs<TComposer, TSearch>): MethodDecorator => {

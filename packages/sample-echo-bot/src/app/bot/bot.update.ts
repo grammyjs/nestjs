@@ -3,8 +3,8 @@ const log = debug('bot:echo.update')
 
 import { UseFilters, UseGuards, UseInterceptors } from '@nestjs/common'
 import { Bot, Context, InlineKeyboard } from 'grammy'
-import { EchoService } from './echo.service'
-import { EchoBotName } from './echo.constants'
+import { EchoService } from './bot.service'
+import { EchoBotName } from './bot.constants'
 import { InjectBot, Update, Message, Start, Hears, Ctx, Help, Admin, CallbackQuery } from '@grammyjs/nestjs'
 import { AdminGuard, ReverseTextPipe, GrammyExceptionFilter, ResponseTimeInterceptor } from './lib'
 

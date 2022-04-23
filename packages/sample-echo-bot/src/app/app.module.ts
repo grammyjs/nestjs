@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common'
-import { EchoBotModule } from './echo-bot/echo.module'
+import { EchoBotModule } from './bot/bot.module'
 import { NestjsGrammyModule } from '@grammyjs/nestjs'
-import { EchoBotName } from './echo-bot/echo.constants'
+import { EchoBotName } from './bot/bot.constants'
 
 @Module({
   imports: [
