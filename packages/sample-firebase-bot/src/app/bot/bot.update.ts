@@ -21,25 +21,25 @@ export class WebhookUpdater {
   }
 
   @Start()
-  async onStart(@Ctx() ctx: Context): Promise<void> {
+  async onStart(@Ctx() ctx: Context): Promise<any> {
     // const me = await this.bot.api.getMe()
     log('onStart!!', this.bot ? this.bot.botInfo.first_name : '(booting)')
-    ctx.reply(`Hey, I'm ${this.bot.botInfo.first_name}`)
+    return ctx.reply(`Hey, I'm ${this.bot.botInfo.first_name}`)
   }
 
   @Help()
-  async onHelp(@Ctx() ctx: Context): Promise<void> {
-    ctx.reply('Send me any text')
+  async onHelp(@Ctx() ctx: Context): Promise<any> {
+    return ctx.reply('Send me any text')
   }
 
   @Admin()
   @UseGuards(AdminGuard)
-  async onAdminCommand(@Ctx() ctx: Context): Promise<void> {
-    ctx.reply('Welcome, Judge')
+  async onAdminCommand(@Ctx() ctx: Context): Promise<any> {
+    return ctx.reply('Welcome, Judge')
   }
 
   @Hears('greetings')
-  async onMessage(@Ctx() ctx: Context, @Message('text', new ReverseTextPipe()) reversedText: string): Promise<void> {
-    ctx.reply(reversedText)
+  async onMessage(@Ctx() ctx: Context, @Message('text', new ReverseTextPipe()) reversedText: string): Promise<any> {
+    return ctx.reply(reversedText)
   }
 }

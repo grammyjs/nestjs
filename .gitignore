@@ -46,3 +46,4 @@ Thumbs.db
 firebase*.json
 .firebaserc
 log/
+firebase-export*
