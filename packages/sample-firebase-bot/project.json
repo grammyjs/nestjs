@@ -32,7 +32,6 @@
           {
             "command": "./packages/sample-firebase-bot/ngrok.sh start"
           },
-
           {
             "command": "kill-port --port 9099,8080,5000,9199,9000,4000"
           },
@@ -49,7 +48,6 @@
           {
             "command": "./packages/sample-firebase-bot/ngrok.sh start"
           },
-
           {
             "command": "kill-port --port 9099,8080,5000,9199,9000,4000"
           },
@@ -100,6 +98,13 @@
       "options": {
         "jestConfig": "packages/sample-firebase-bot/jest.config.js",
         "passWithNoTests": true
+      }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventional",
+        "commitMessageFormat": "chore(${projectName}): release version ${version}"
       }
     }
   },
