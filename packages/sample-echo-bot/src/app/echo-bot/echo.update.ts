@@ -17,13 +17,13 @@ export class EchoUpdate {
     private readonly bot: Bot<Context>,
     private readonly echoService: EchoService,
   ) {
-    log('echo update starting', this.bot ? this.bot.botInfo.id : '(booting)')
+    log('echo update starting', this.bot ? this.bot.botInfo.first_name : '(booting)')
   }
 
   @Start()
   async onStart(@Ctx() ctx: Context): Promise<void> {
     // const me = await this.bot.api.getMe()
-    log('onStart!!', this.bot ? this.bot.botInfo : '(booting)')
+    log('onStart!!', this.bot ? this.bot.botInfo.first_name : '(booting)')
     ctx.reply(`Hey, I'm ${this.bot.botInfo.first_name}`)
   }
 

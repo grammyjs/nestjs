@@ -45,6 +45,7 @@ The `packages/sample-echo-bot` is fully functioning and can be run with a bot to
 
 -   [@grammyjs/nest](packages/grammy-nestjs) - The NestJS / grammY plugin source code
 -   [sample-echo-bot](packages/sample-echo-bot) - a sample echo-bot written in NestJS
+-   [sample-firebase-bot](packages/sample-firebase-bot) - the echo-bot written in NestJS using Firebase Functions for a serverless implementation
 
 ## Building
 
@@ -60,4 +61,16 @@ To deploy:
 
 ```sh
 yarn nx run grammy-nestjs:publish
+```
+
+## Firebase Emulation
+
+> :warning: **Firebase Emulation Only** You may need to link `@grammyjs/nestjs` to this project. For example:
+
+```sh
+nx run grammy-nestjs:build
+pushd dist/packages/grammy-nestjs/
+yarn link
+popd
+yarn link @grammyjs/nestjs
 ```

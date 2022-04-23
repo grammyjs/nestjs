@@ -19,6 +19,6 @@ export class EchoService {
   }
   async showBot() {
     await this.bot.init()
-    log(this.bot.botInfo)
+    log(`I am bot id=${this.bot.botInfo.id}, username=${this.bot.botInfo.username}`)
   }
 }

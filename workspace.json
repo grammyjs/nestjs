@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "grammy-nestjs": "packages/grammy-nestjs",
-    "sample-echo-bot": "packages/sample-echo-bot"
+    "sample-echo-bot": "packages/sample-echo-bot",
+    "sample-firebase-bot": "packages/sample-firebase-bot"
   }
 }
