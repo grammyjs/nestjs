@@ -2,9 +2,9 @@ import debug from 'debug'
 const log = debug('bot:echo.update')
 
 import { UseFilters, UseGuards, UseInterceptors } from '@nestjs/common'
+import { Bot, Context, InlineKeyboard } from 'grammy'
 import { EchoService } from './echo.service'
 import { EchoBotName } from './echo.constants'
-import { Bot, Context, InlineKeyboard } from 'grammy'
 import { InjectBot, Update, Message, Start, Hears, Ctx, Help, Admin, CallbackQuery } from '@grammyjs/nestjs'
 import { AdminGuard, ReverseTextPipe, GrammyExceptionFilter, ResponseTimeInterceptor } from './lib'
 
@@ -19,7 +19,7 @@ export class EchoUpdate {
     private readonly bot: Bot<Context>,
     private readonly echoService: EchoService,
   ) {
-    log('echo update starting', this.bot ? this.bot.botInfo.first_name : '(booting)')
+    log(`Initializing`, bot.isInited() ? bot.botInfo.first_name : '(pending)')
 
     this.inlineKeyboard = new InlineKeyboard().text('click', 'click-payload')
   }
