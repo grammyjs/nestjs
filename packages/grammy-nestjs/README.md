@@ -186,7 +186,7 @@ By default, the bot receives updates using long-polling and requires no addition
 
 ### Webhooks
 
-If you want to configure a telegram bot webhook, you need to get a middleware via `getBotToken` helper in your `main.ts` file.
+If you want to configure a telegram bot webhook, you need to get a middleware via `getBotToken` helper in your `index.ts` file.
 
 To access it, you must use the `app.get()` method, followed by the provider reference:
 

@@ -1,10 +1,11 @@
-import debug from 'debug'
-const log = debug('bot:echo.service')
-
-import { Injectable } from '@nestjs/common'
-import { Bot, Context } from 'grammy'
 import { InjectBot } from '@grammyjs/nestjs'
+import { Injectable } from '@nestjs/common'
+import debug from 'debug'
+import { Bot, Context } from 'grammy'
+
 import { EchoBotName } from './bot.constants'
+
+const log = debug('bot:echo.service')
 
 @Injectable()
 export class EchoService {
@@ -14,8 +15,7 @@ export class EchoService {
   echo(text: string): string {
     return `Echo: ${text}`
   }
-  async showBot() {
-    await this.bot.init()
+  showBot() {
     log(`I am bot id=${this.bot.botInfo.id}, username=${this.bot.botInfo.username}`)
   }
 }

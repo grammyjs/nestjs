@@ -1,14 +1,15 @@
-import debug from 'debug'
-const log = debug('bot:firebase-bot.module')
-
-import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common'
-import { FirebaseBotService } from './bot.service'
-import { FirestoreService } from './lib/firestore/firestore.service'
-import { Bot, Context, webhookCallback } from 'grammy'
 import { InjectBot } from '@grammyjs/nestjs'
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common'
+import debug from 'debug'
+import { Bot, Context, webhookCallback } from 'grammy'
+
 import { FirebaseBotName } from './bot.constants'
+import { FirebaseBotService } from './bot.service'
 import { WebhookUpdater } from './bot.update'
-import { LoggerMiddleware } from './lib'
+import { ResponseTime } from './lib'
+import { FirestoreService } from './lib/firestore/firestore.service'
+
+const log = debug('bot:firebase-bot.module')
 
 @Module({
   providers: [FirebaseBotService, FirestoreService, WebhookUpdater],
@@ -20,9 +21,10 @@ export class FirebaseWebhookModule implements NestModule {
     private readonly bot: Bot<Context>,
   ) {
     log(`FirebaseWebhookModule created`)
+    bot.use(ResponseTime)
   }
 
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(webhookCallback(this.bot, 'express'), LoggerMiddleware).forRoutes('*')
+    consumer.apply(webhookCallback(this.bot, 'express')).forRoutes('*')
   }
 }

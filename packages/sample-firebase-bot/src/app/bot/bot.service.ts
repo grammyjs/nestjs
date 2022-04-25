@@ -1,12 +1,13 @@
 /* eslint-disable no-debugger */
 /* eslint-disable @typescript-eslint/no-var-requires */
-import debug from 'debug'
-const log = debug('bot:firebase-bot.service')
-
-import { Injectable } from '@nestjs/common'
-import { Bot, Context } from 'grammy'
 import { InjectBot } from '@grammyjs/nestjs'
+import { Injectable } from '@nestjs/common'
+import debug from 'debug'
+import { Bot, Context } from 'grammy'
+
 import { FirebaseBotName } from './bot.constants'
+
+const log = debug('bot:firebase-bot.service')
 
 // import { FirestoreUtils } from '../common/FirestoreUtils'
 
@@ -16,10 +17,9 @@ export class FirebaseBotService {
     @InjectBot(FirebaseBotName)
     private readonly bot: Bot<Context>,
   ) {
-    //
+    log(`We are starting the FirebaseBotService!`, bot.isInited() ? bot.botInfo.first_name : '(pending)')
   }
-
-  botInfo(): void {
-    log(`FirebaseBotService!`, this.bot.botInfo.first_name)
+  showBot(): void {
+    log(`I am bot id=${this.bot.botInfo.id}, username=${this.bot.botInfo.username}`)
   }
 }

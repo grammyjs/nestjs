@@ -1,23 +1,15 @@
 import debug from 'debug'
+import { NextFunction } from 'express'
+import { Context } from 'grammy'
+
 const log = debug('bot:logging.middleware')
 
-import { Injectable, NestMiddleware } from '@nestjs/common'
-import { Request, Response, NextFunction } from 'express'
-import { Bot, Context } from 'grammy'
-import { InjectBot } from '@grammyjs/nestjs'
-import { FirebaseBotName } from '../../bot.constants'
-
-@Injectable()
-export class LoggerMiddleware implements NestMiddleware {
-  constructor(
-    @InjectBot(FirebaseBotName)
-    private readonly bot: Bot<Context>,
-  ) {
-    log(`We are starting the LoggerMiddleware!`)
-  }
-
-  use(req: Request, res: Response, next: NextFunction) {
-    log(`Request: ${req.url} with ${req.query}`, req.headers)
-    next()
-  }
+export async function ResponseTime(
+  ctx: Context,
+  next: NextFunction, // is an alias for: () => Promise<void>
+): Promise<void> {
+  const before = Date.now() // milliseconds
+  await next() // make sure to `await`!
+  const after = Date.now() // milliseconds
+  log(`Response time via middleware: ${after - before} ms`)
 }

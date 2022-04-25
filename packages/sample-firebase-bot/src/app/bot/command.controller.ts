@@ -1,10 +1,11 @@
-import { Controller, Param, Put } from '@nestjs/common'
-import { Bot, Context } from 'grammy'
-import { FirebaseBotName } from './bot.constants'
 import { InjectBot } from '@grammyjs/nestjs'
+import { Controller, Param, Put } from '@nestjs/common'
+import debug from 'debug'
+import { Bot, Context } from 'grammy'
+
+import { FirebaseBotName } from './bot.constants'
 import { FirebaseBotService } from './bot.service'
 
-import debug from 'debug'
 const log = debug('bot:firebase-bot.controller')
 
 @Controller()
@@ -23,7 +24,7 @@ export class FirebaseCommandController {
     // TODO: authorize
     switch (action) {
       case 'show':
-        return this.appService.botInfo()
+        return this.appService.showBot()
     }
   }
 }
