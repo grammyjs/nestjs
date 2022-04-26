@@ -1,5 +1,5 @@
 import { ModuleMetadata, Type } from '@nestjs/common/interfaces'
-import { Middleware, BotConfig, PollingOptions, ApiClientOptions } from 'grammy'
+import { Middleware, BotConfig, PollingOptions } from 'grammy'
 
 export interface GrammyModuleOptions {
   token: string

@@ -1,12 +1,13 @@
-import debug from 'debug'
-const log = debug('bot:echo.update')
-
+import { Admin, CallbackQuery, Ctx, Hears, Help, InjectBot, Message, Start, Update } from '@grammyjs/nestjs'
 import { UseFilters, UseGuards, UseInterceptors } from '@nestjs/common'
+import debug from 'debug'
 import { Bot, Context, InlineKeyboard } from 'grammy'
-import { EchoService } from './echo.service'
-import { EchoBotName } from './echo.constants'
-import { InjectBot, Update, Message, Start, Hears, Ctx, Help, Admin, CallbackQuery } from '@grammyjs/nestjs'
-import { AdminGuard, ReverseTextPipe, GrammyExceptionFilter, ResponseTimeInterceptor } from './lib'
+
+import { EchoBotName } from './bot.constants'
+import { EchoService } from './bot.service'
+import { AdminGuard, GrammyExceptionFilter, ResponseTimeInterceptor, ReverseTextPipe } from './lib'
+
+const log = debug('bot:echo.update')
 
 @Update()
 @UseInterceptors(ResponseTimeInterceptor)

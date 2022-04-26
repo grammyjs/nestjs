@@ -1,7 +1,11 @@
-import { Module } from '@nestjs/common'
-import { EchoBotModule } from './echo-bot/echo.module'
 import { NestjsGrammyModule } from '@grammyjs/nestjs'
-import { EchoBotName } from './echo-bot/echo.constants'
+import { Module } from '@nestjs/common'
+import debug from 'debug'
+
+import { EchoBotName } from './bot/bot.constants'
+import { EchoBotModule } from './bot/bot.module'
+
+const log = debug('bot:app.module')
 
 @Module({
   imports: [
@@ -14,4 +18,8 @@ import { EchoBotName } from './echo-bot/echo.constants'
     EchoBotModule,
   ],
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {
+    log(`Initializing AppModule`)
+  }
+}

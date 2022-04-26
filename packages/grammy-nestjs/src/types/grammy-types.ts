@@ -13,7 +13,7 @@ export type StringOrRegexQuery = string | RegExp | string[]
 
 export type CommandQuery = 'start' | 'help' | 'settings' | 'admin'
 
-export type EmitterQuery = 'on' | 'command' | 'hears' | 'gameQuery' | 'inlineQuery' | 'callbackQuery'
+export type BotQuery = 'on' | 'command' | 'hears' | 'gameQuery' | 'inlineQuery' | 'callbackQuery'
 
 export type ComposerMethodArgs<T extends Composer<never>, U extends FilterQuery | StringOrRegexQuery | CommandQuery> = Filter<
   Parameters<any>,
