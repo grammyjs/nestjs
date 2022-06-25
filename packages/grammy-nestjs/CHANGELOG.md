@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.0](https://github.com/grammyjs/nestjs/compare/grammy-nestjs-0.2.0...grammy-nestjs-0.3.0) (2022-06-25)
+
+### Features
+
+-   fix explorer startup race condition ([9de1ce5](https://github.com/grammyjs/nestjs/commit/9de1ce511cdcd052ae4dc83e19ad7a64fa6b1588)), closes [#10](https://github.com/grammyjs/nestjs/issues/10)
+-   misc cleanup ([ad47d69](https://github.com/grammyjs/nestjs/commit/ad47d69252af646a92e3c44ab66a24e6c59e34ab))
+-   rename emitter and cleanup code ([d7d5297](https://github.com/grammyjs/nestjs/commit/d7d529798ef2571dfe3e9b80cfbe145545dde6fc))
+
 ## [0.2.0](https://github.com/grammyjs/nestjs/compare/grammy-nestjs-0.1.0...grammy-nestjs-0.2.0) (2022-04-23)
 
 ### Features
