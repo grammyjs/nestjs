@@ -13,7 +13,7 @@ if [ "$?" == "0" -a "$BRANCH_NAME" != "" ]; then
 
   #if the refs of the previous and new heads are the same
   #AND the number of checkouts equals one, a new branch has been created
-  if [ "$BRANCH_NAME" != "master" ] && [ "$1" == "$2"  ] && [ ${NUM_CHECKOUTS} -eq 1 ]; then
+  if [ "$BRANCH_NAME" != "main" ] && [ "$1" == "$2"  ] && [ ${NUM_CHECKOUTS} -eq 1 ]; then
       yarn version --patch --no-git-tag-version
   fi
 fi
