@@ -44,6 +44,11 @@ export class ListenersExplorerService extends BaseExplorerService implements OnM
     })
 
     this.explore()
+
+    if (!this.grammyOptions.useWebhook) {
+      log('pollingOptions: ', this.grammyOptions.pollingOptions)
+      this.bot.start(this.grammyOptions.pollingOptions || {})
+    }
   }
 
   explore(): void {
