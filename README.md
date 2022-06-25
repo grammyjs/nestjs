@@ -1,3 +1,9 @@
+<div align="center">
+
+![issues](https://badgen.net/github/open-issues/grammyjs/nestjs)![GitHub last commit](https://img.shields.io/github/last-commit/grammyjs/nestjs)![tags](https://badgen.net/github/tags/grammyjs/nestjs)![license](https://badgen.net/badge/license/MIT/blue)
+
+</div>
+
 # grammY port of NestJS Telegraf
 
 > :information_source: This project would not be possible without the help and assistance of [Aleksandr Bukhalo](https://t.me/bukhalo_a) and the fantastic [bukhalo/nestjs-telegraf](https://github.com/bukhalo/nestjs-telegraf) project.
