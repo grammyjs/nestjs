@@ -1,3 +1,9 @@
+<div align="center">
+
+![issues](https://badgen.net/github/open-issues/grammyjs/nestjs)![GitHub last commit](https://img.shields.io/github/last-commit/grammyjs/nestjs)![tags](https://badgen.net/github/tags/grammyjs/nestjs)![license](https://badgen.net/badge/license/MIT/blue)
+
+</div>
+
 # grammY port of NestJS Telegraf
 
 > :information_source: This project would not be possible without the help and assistance of [Aleksandr Bukhalo](https://t.me/bukhalo_a) and the fantastic [bukhalo/nestjs-telegraf](https://github.com/bukhalo/nestjs-telegraf) project.
@@ -17,8 +23,6 @@
     -   [Middlewares](#middlewares)
     -   [Multiple Bots](#multiple-bots)
     -   [Standalone Applications](#standalone-applications)
-
-<!-- # NestJS grammY ![npm](https://img.shields.io/npm/dm/nestjs-telegraf) ![GitHub last commit](https://img.shields.io/github/last-commit/bukhalo/nestjs-telegraf) ![NPM](https://img.shields.io/npm/l/nestjs-telegraf) -->
 
 <img align="right" width="95" height="148" title="NestJS logotype"
      src="https://nestjs.com/img/logo-small.svg">
@@ -140,7 +144,7 @@ Like other [factory providers](https://docs.nestjs.com/fundamentals/custom-provi
 
 ```typescript
 NestjsGrammyModule.forRootAsync({
-    imports: [ConfigModule.forFeature(telegrafModuleConfig)],
+    imports: [ConfigModule.forFeature(grammyModuleConfig)],
     useFactory: async (configService: ConfigService) => ({
         token: configService.get<string>('TELEGRAM_BOT_TOKEN'),
     }),
@@ -152,16 +156,16 @@ Alternatively, you can configure the NestjsGrammyModule using a class instead of
 
 ```typescript
 NestjsGrammyModule.forRootAsync({
-    useClass: TelegrafConfigService,
+    useClass: MyConfigService,
 })
 ```
 
-The construction above instantiates `TelegrafConfigService` inside `NestjsGrammyModule`, using it to create the required options object. Note that in this example, the `TelegrafConfigService` has to implement the `TelegrafOptionsFactory` interface, as shown below. The `NestjsGrammyModule` will call the `createTelegrafOptions()` method on the instantiated object of the supplied class.
+The construction above instantiates `MyConfigService` inside `NestjsGrammyModule`, using it to create the required options object. Note that in this example, the `MyConfigService` has to implement the `MyOptionsFactory` interface, as shown below. The `NestjsGrammyModule` will call the `createMyOptions()` method on the instantiated object of the supplied class.
 
 ```typescript
 @Injectable()
-class TelegrafConfigService implements TelegrafOptionsFactory {
-    createTelegrafOptions(): NestjsGrammyModuleOptions {
+class MyConfigService implements MyOptionsFactory {
+    createMyOptions(): NestjsGrammyModuleOptions {
         return {
             token: 'TELEGRAM_BOT_TOKEN',
         }
@@ -173,7 +177,7 @@ If you want to reuse an existing options provider instead of creating a private 
 
 ```typescript
 NestjsGrammyModule.forRootAsync({
-    imports: [ConfigModule.forFeature(telegrafModuleConfig)],
+    imports: [ConfigModule.forFeature(grammyModuleConfig)],
     useExisting: ConfigService,
 })
 ```
@@ -186,44 +190,59 @@ By default, the bot receives updates using long-polling and requires no addition
 
 ### Webhooks
 
-If you want to configure a telegram bot webhook, you need to get a middleware via `getBotToken` helper in your `index.ts` file.
+To utilize webhooks, the best documentation is to review the [Sample Firebase Bot](tree/main/packages/sample-firebase-bot) package and how it configures webhooks.
 
-To access it, you must use the `app.get()` method, followed by the provider reference:
+At a high level, you simply enable webhooks and pass the webhook module as follows:
 
-```typescript
-import { getBotToken } from 'nestjs-telegraf'
-
-// ...
-const bot = app.get(getBotToken())
+```ts
+      useWebhook: true,
+      include: [FirebaseWebhookModule],
 ```
 
-Now you can connect middleware:
+This module must initialize the webhooks for grammY as such:
 
-```typescript
-app.use(bot.webhookCallback('/secret-path'))
+```ts
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(webhookCallback(this.bot, 'express')).forRoutes('*')
+  }
 ```
 
-The last step is to specify launchOptions in `forRoot` method:
+The last step is to write the update functions in a module like this:
 
-```typescript
-NestjsGrammyModule.forRootAsync({
-    imports: [ConfigModule],
-    useFactory: (configService: ConfigService) => ({
-        token: configService.get<string>('TELEGRAM_BOT_TOKEN'),
-        launchOptions: {
-            webhook: {
-                domain: 'domain.tld',
-                hookPath: '/secret-path',
-            },
-        },
-    }),
-    inject: [ConfigService],
-})
+```ts
+@Update()
+@UseInterceptors(ResponseTimeInterceptor)
+@UseFilters(GrammyExceptionFilter)
+export class WebhookUpdater {
+  private readonly inlineKeyboard: InlineKeyboard
+
+  constructor(
+    @InjectBot(FirebaseBotName)
+    private readonly bot: Bot<Context>,
+    private readonly botService: FirebaseBotService,
+  ) {
+    log(`Initializing`, bot.isInited() ? bot.botInfo.first_name : '(pending)')
+  }
+
+  @Start()
+  async onStart(@Ctx() ctx: Context): Promise<any> {
+    log('onStart!!', this.bot ? this.bot.botInfo.first_name : '(booting)')
+    return ctx.reply('Curious? Click me!', { reply_markup: this.inlineKeyboard })
+  }
+
+  @CallbackQuery('click-payload')
+  async onCallback(@Ctx() ctx: Context): Promise<any> {
+    return ctx.answerCallbackQuery({
+      text: 'You were curious, indeed!',
+    })
+  }
+
+  ...
 ```
 
 ## Middlewares
 
-`nestjs-telegraf` has support of the Telegraf middleware packages. To use an existing middleware package, simply import it and add it to the middlewares array:
+`@grammyjs/nestjs` has support of the grammY middleware packages. To use an existing middleware package, simply import it and add it to the middlewares array:
 
 ```typescript
 NestjsGrammyModule.forRoot({
@@ -238,7 +257,7 @@ In some cases, you may need to run multiple bots at the same time. This can also
 ```typescript
 import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
-import { NestjsGrammyModule } from 'nestjs-telegraf'
+import { NestjsGrammyModule } from '@grammyjs/nestjs'
 
 @Module({
     imports: [
@@ -252,7 +271,7 @@ import { NestjsGrammyModule } from 'nestjs-telegraf'
             inject: [ConfigService],
         }),
         NestjsGrammyModule.forRootAsync({
-            imports: [ConfigModule.forFeature(telegrafModuleConfig)],
+            imports: [ConfigModule.forFeature(myModuleConfig)],
             botName: 'dog',
             useFactory: async (configService: ConfigService) => ({
                 token: configService.get<string>('DOG_BOT_TOKEN'),
@@ -272,11 +291,11 @@ You can also inject the `Bot` for a given bot:
 
 ```typescript
 import { Injectable } from '@nestjs/common'
-import { InjectBot, Telegraf, Context } from 'nestjs-telegraf'
+import { InjectBot, Bot, Context } from '@grammyjs/nestjs'
 
 @Injectable()
 export class EchoService {
-    constructor(@InjectBot('cat') private catBot: Telegraf<Context>) {}
+    constructor(@InjectBot('cat') private catBot: Bot<Context>) {}
 }
 ```
 
@@ -285,14 +304,14 @@ To inject a given `Bot` to a custom provider (for example, factory provider), us
 ```typescript
 {
   provide: CatsService,
-  useFactory: (catBot: Telegraf<Context>) => {
+  useFactory: (catBot: Bot<Context>) => {
     return new CatsService(catBot);
   },
   inject: [getBotToken('cat')],
 }
 ```
 
-Another useful feature of the `nestjs-telegraf` module is the ability to choose which modules should handle updates for each launched bot. By default, module searches for handlers throughout the whole app. To limit this scan to only a subset of modules, use the include property.
+Another useful feature of the `@grammyjs/nestjs` module is the ability to choose which modules should handle updates for each launched bot. By default, module searches for handlers throughout the whole app. To limit this scan to only a subset of modules, use the include property.
 
 ```typescript
 NestjsGrammyModule.forRootAsync({
@@ -308,7 +327,7 @@ NestjsGrammyModule.forRootAsync({
 
 ## Standalone Applications
 
-If you initialized your application with the [Nest CLI](https://docs.nestjs.com/cli/overview), [Express](https://expressjs.com/) framework will be installed by default along with Nest. Nest and NestJS Telegraf does not require Express for work. So if you don't plan to getting bot updates through webhooks, and you don't need a web server, you can remove Express.
+If you initialized your application with the [Nest CLI](https://docs.nestjs.com/cli/overview), [Express](https://expressjs.com/) framework will be installed by default along with Nest. Nest and NestJS grammY does not require Express for work. So if you don't plan to getting bot updates through webhooks, and you don't need a web server, you can remove Express.
 
 To do this, change the `bootstrap` function in the `main.ts` file of your project on something like that:
 
