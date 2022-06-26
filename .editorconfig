@@ -13,10 +13,10 @@ insert_final_newline = true
 max_line_length = off
 trim_trailing_whitespace = false
 
-[*.{json,yml,md,babelrc,remarkrc,prettierrc}]
-indent_style = space
-indent_size = 4
-
 [*.py]
 indent_style = space
 indent_size = 4
+
+[*.{json,yml,md,babelrc,remarkrc,prettierrc}]
+indent_style = space
+indent_size = 2
