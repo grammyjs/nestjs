@@ -2,6 +2,12 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+### [0.3.1](https://github.com/grammyjs/nestjs/compare/grammy-nestjs-0.3.0...grammy-nestjs-0.3.1) (2022-06-26)
+
+### Bug Fixes
+
+-   add lodash and other deps to package.json build ([ad7389c](https://github.com/grammyjs/nestjs/commit/ad7389c70cf9754482f6721638d140c5bc7c964a)), closes [#14](https://github.com/grammyjs/nestjs/issues/14)
+
 ## [0.3.0](https://github.com/grammyjs/nestjs/compare/grammy-nestjs-0.2.0...grammy-nestjs-0.3.0) (2022-06-25)
 
 ### Features
