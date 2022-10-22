@@ -37,7 +37,7 @@ This project was generated using [Nx](https://nx.dev).
 To test out this repo, the following process is recommended until released:
 
 -   Clone the repo
--   Run nx g @nrwl/nest:app mytestapp
+-   Run `nx g @nrwl/nest:app mytestapp`
 -   Copy `.env.example` to `.env` and fill in with the appropriate information (leave `BOT_INFO` blank at first -- you will see a debug log showing how to fill it out in the future)
 -   Run nx run mytestapp:serve to run your app (or use the Nx Console from VS Code).
 
