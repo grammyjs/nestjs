@@ -93,12 +93,14 @@ export class ListenersExplorerService extends BaseExplorerService implements OnM
       return undefined
     }
 
+    const composerByMetadata = this.setupComposerWithMetadata(composer, methodRef)
+
     const listenerCallbackFn = this.createContextCallback(instance, prototype, methodName)
 
     // TODO: do we do anything with args?
     for (const { method, emitter } of metadata) {
       log(`Setting up listener for bot.${emitter}('${method}')`)
-      this.bot[emitter](method, listenerCallbackFn)
+      composerByMetadata[emitter](method, listenerCallbackFn)
     }
   }
 
@@ -116,5 +118,20 @@ export class ListenersExplorerService extends BaseExplorerService implements OnM
       'grammy',
     )
     return resolverCallback
+  }
+
+  setupComposerWithMetadata(composer: Composer<any>, methodRef) {
+    const metadata = this.metadataAccessor.getComposerMetadata(methodRef)
+    if (!metadata) return composer
+
+    let composerWithFilters = composer
+    for (const { method, arg } of metadata) {
+      log(`Setting up composer for bot.${method}(${arg})`)
+
+      // Looks like TypeScript bug, so I hacked it with 'as any'
+      composerWithFilters = (composerWithFilters as any)[method](arg)
+    }
+
+    return composerWithFilters
   }
 }

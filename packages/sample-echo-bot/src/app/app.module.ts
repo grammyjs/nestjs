@@ -11,9 +11,11 @@ const log = debug('bot:app.module')
   imports: [
     NestjsGrammyModule.forRoot({
       botName: EchoBotName,
-      options: { botInfo: JSON.parse(process.env.BOT_INFO) },
       token: process.env.BOT_TOKEN,
       include: [EchoBotModule],
+      pollingOptions: {
+        allowed_updates: ['chat_member', 'message', 'callback_query'],
+      },
     }),
     EchoBotModule,
   ],

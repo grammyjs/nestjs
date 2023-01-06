@@ -1,4 +1,17 @@
-import { Admin, CallbackQuery, Ctx, Hears, Help, InjectBot, Message, Start, Update } from '@grammyjs/nestjs'
+import {
+  Admin,
+  CallbackQuery,
+  Ctx,
+  Hears,
+  Help,
+  InjectBot,
+  Message,
+  Start,
+  Update,
+  ChatType,
+  On,
+  UpdateFilter,
+} from '@grammyjs/nestjs'
 import { UseFilters, UseGuards, UseInterceptors } from '@nestjs/common'
 import debug from 'debug'
 import { Bot, Context, InlineKeyboard } from 'grammy'
@@ -52,5 +65,17 @@ export class EchoUpdate {
   @Hears('greetings')
   async onMessage(@Ctx() ctx: Context, @Message('text', new ReverseTextPipe()) reversedText: string): Promise<any> {
     return ctx.reply(reversedText)
+  }
+
+  @On('chat_member')
+  @UpdateFilter(ctx => ctx.chatMember?.new_chat_member.status === 'member')
+  greetNewMember(@Ctx() ctx: Context) {
+    return ctx.reply(`Welcome to our chat, ${ctx.chatMember.new_chat_member.user.first_name}!`)
+  }
+
+  @On('message')
+  @ChatType('private')
+  onPrivateMessage(@Ctx() ctx: Context) {
+    return ctx.reply('Hello! This is private chat. You can continue to tell me your secrets')
   }
 }
