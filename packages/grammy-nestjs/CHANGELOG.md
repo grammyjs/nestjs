@@ -2,11 +2,9 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
-### [0.3.2](https://github.com/grammyjs/nestjs/compare/grammy-nestjs-0.3.1...grammy-nestjs-0.3.2) (2023-01-08)
+## [0.3.2](https://github.com/grammyjs/nestjs/compare/grammy-nestjs-0.3.1...grammy-nestjs-0.3.2) (2022-10-07)
 
-### Added back middlewares call in bot factory.
-
--   add back middleware call ([d501109](https://github.com/grammyjs/nestjs/commit/d50110902c84d96c02534d6ac27387dd67372478))
+### Publish peer dependency for NestJS ^9.0.0.
 
 ### [0.3.1](https://github.com/grammyjs/nestjs/compare/grammy-nestjs-0.3.0...grammy-nestjs-0.3.1) (2022-06-26)
 
