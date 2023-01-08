@@ -1,7 +1,7 @@
 {
   "name": "@grammyjs/nestjs",
   "description": "grammY module for NestJS",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "author": {
     "name": "Mike Crowe",
     "email": "drmikecrowe@gmail.com"
