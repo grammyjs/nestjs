@@ -36,7 +36,6 @@ This package uses the best of the NodeJS world under the hood. [grammY](https://
 -   Simple. Easy to use.
 -   Ton of decorators available out of the box for handling bot actions.
 -   Ability to create custom decorators.
--   Scenes support.
 -   grammY plugins and custom plugins support.
 -   Ability to run multiple bots simultaneously.
 -   Full support of NestJS guards, interceptors, filters and pipes!
