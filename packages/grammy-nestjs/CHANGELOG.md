@@ -4,7 +4,7 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 ### [0.3.3](https://github.com/grammyjs/nestjs/compare/grammy-nestjs-0.3.2...grammy-nestjs-0.3.3) (2023-01-08)
 
-### Bug Fixes
+### Add back `bot.use(...)` call in factory to fix middleware.
 
 -   bump deps - include NestJS@^9.0.0 ([44e17b0](https://github.com/grammyjs/nestjs/commit/44e17b04c2a3a093fa9cbaaacc9ab217111c4594))
 
