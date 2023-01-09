@@ -8,6 +8,10 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 -   create composer decorators ([4be9318](https://github.com/grammyjs/nestjs/commit/4be93183f55eea3bd87c434d5b91292a0cb320ca))
 
+## [0.3.2](https://github.com/grammyjs/nestjs/compare/grammy-nestjs-0.3.1...grammy-nestjs-0.3.2) (2022-10-07)
+
+Publish peer dependency for NestJS ^9.0.0.
+
 ### [0.3.1](https://github.com/grammyjs/nestjs/compare/grammy-nestjs-0.3.0...grammy-nestjs-0.3.1) (2022-06-26)
 
 ### Bug Fixes
