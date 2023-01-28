@@ -7,6 +7,8 @@ const log = debug('nestjs-grammy:create-bot-factory.util')
 export async function createBotFactory(options: GrammyModuleOptions): Promise<Bot<any>> {
   const bot = new Bot<any>(options.token, options.options)
 
+  bot.use(...(options.middlewares ?? []))
+
   if (!bot.isInited()) {
     await bot.init()
     log(`To optimize (for example):`)
