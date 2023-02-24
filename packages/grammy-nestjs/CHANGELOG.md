@@ -8,9 +8,15 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 -   create composer decorators ([4be9318](https://github.com/grammyjs/nestjs/commit/4be93183f55eea3bd87c434d5b91292a0cb320ca))
 
+### [0.3.3](https://github.com/grammyjs/nestjs/compare/grammy-nestjs-0.3.2...grammy-nestjs-0.3.3) (2023-01-08)
+
+### Add back `bot.use(...)` call in factory to fix middleware.
+
+-   bump deps - include NestJS@^9.0.0 ([44e17b0](https://github.com/grammyjs/nestjs/commit/44e17b04c2a3a093fa9cbaaacc9ab217111c4594))
+
 ## [0.3.2](https://github.com/grammyjs/nestjs/compare/grammy-nestjs-0.3.1...grammy-nestjs-0.3.2) (2022-10-07)
 
-Publish peer dependency for NestJS ^9.0.0.
+### Publish peer dependency for NestJS ^9.0.0.
 
 ### [0.3.1](https://github.com/grammyjs/nestjs/compare/grammy-nestjs-0.3.0...grammy-nestjs-0.3.1) (2022-06-26)
 
