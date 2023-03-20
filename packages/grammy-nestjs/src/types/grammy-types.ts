@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Composer, FilterQuery, Middleware } from 'grammy'
+import { Chat } from '@grammyjs/types'
 
 export type Filter<T extends any[], F> = T extends []
   ? []
@@ -19,3 +20,5 @@ export type ComposerMethodArgs<T extends Composer<never>, U extends FilterQuery 
   Parameters<any>,
   Middleware<never>
 >
+
+export type ChatTypesEnum = Chat['type']

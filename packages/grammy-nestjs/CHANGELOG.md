@@ -2,6 +2,12 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.4.0](https://github.com/grammyjs/nestjs/compare/grammy-nestjs-0.3.1...grammy-nestjs-0.4.0) (2023-01-08)
+
+### Features
+
+-   create composer decorators ([4be9318](https://github.com/grammyjs/nestjs/commit/4be93183f55eea3bd87c434d5b91292a0cb320ca))
+
 ### [0.3.3](https://github.com/grammyjs/nestjs/compare/grammy-nestjs-0.3.2...grammy-nestjs-0.3.3) (2023-01-08)
 
 ### Add back `bot.use(...)` call in factory to fix middleware.

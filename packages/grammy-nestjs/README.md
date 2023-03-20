@@ -106,6 +106,18 @@ export class EchoUpdate {
     async onMessage(@Ctx() ctx: Context, @Message('text', new ReverseTextPipe()) reversedText: string): Promise<void> {
         ctx.reply(reversedText)
     }
+
+    @On('chat_member')
+    @UpdateFilter(ctx => ctx.chatMember?.new_chat_member.status === 'member')
+    greetNewMember(@Ctx() ctx: Context) {
+        ctx.reply(`Welcome to our chat, ${ctx.chatMember.new_chat_member.user.first_name}!`)
+    }
+
+    @On('message')
+    @ChatType('private')
+    onPrivateMessage(@Ctx() ctx: Context) {
+        ctx.reply('Hello! This is private chat. You can continue to tell me your secrets')
+    }
 }
 ```
 
