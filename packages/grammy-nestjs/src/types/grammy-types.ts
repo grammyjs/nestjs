@@ -10,7 +10,7 @@ export type Filter<T extends any[], F> = T extends []
     : [Head, ...Filter<Tail, F>]
   : []
 
-export type StringOrRegexQuery = string | RegExp | string[]
+export type StringOrRegexQuery = string | RegExp | string[] | RegExp[]
 
 export type CommandQuery = 'start' | 'help' | 'settings' | 'admin'
 
