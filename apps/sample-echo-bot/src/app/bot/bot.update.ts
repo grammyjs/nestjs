@@ -44,7 +44,7 @@ export class EchoUpdate {
   }
 
   @Start()
-  async onStart(@Ctx() ctx: Context): Promise<any> {
+  async onStart(@Ctx() ctx: Context) {
     logger.debug(
       'onStart!!',
       this.bot ? this.bot.botInfo.first_name : '(booting)',
@@ -56,20 +56,20 @@ export class EchoUpdate {
   }
 
   @CallbackQuery('click-payload')
-  async onCallback(@Ctx() ctx: Context): Promise<any> {
+  async onCallback(@Ctx() ctx: Context) {
     return ctx.answerCallbackQuery({
       text: 'You were curious, indeed!',
     });
   }
 
   @Help()
-  async onHelp(@Ctx() ctx: Context): Promise<any> {
+  async onHelp(@Ctx() ctx: Context) {
     return ctx.reply('Send me any text');
   }
 
   @Admin()
   @UseGuards(AdminGuard)
-  async onAdminCommand(@Ctx() ctx: Context): Promise<any> {
+  async onAdminCommand(@Ctx() ctx: Context) {
     return ctx.reply('Welcome, Judge');
   }
 
@@ -77,7 +77,7 @@ export class EchoUpdate {
   async onMessage(
     @Ctx() ctx: Context,
     @Message('text', new ReverseTextPipe()) reversedText: string,
-  ): Promise<any> {
+  ) {
     return ctx.reply(reversedText);
   }
 

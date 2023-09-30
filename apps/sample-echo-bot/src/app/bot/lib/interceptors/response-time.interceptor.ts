@@ -5,14 +5,13 @@ import {
   Logger,
   NestInterceptor,
 } from '@nestjs/common';
-import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 const logger = new Logger('bot:response-time.interceptor');
 
 @Injectable()
 export class ResponseTimeInterceptor implements NestInterceptor {
-  intercept(_context: ExecutionContext, next: CallHandler): Observable<any> {
+  intercept(_context: ExecutionContext, next: CallHandler) {
     const start = Date.now();
 
     return next

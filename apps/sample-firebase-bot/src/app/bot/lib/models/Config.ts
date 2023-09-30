@@ -6,6 +6,7 @@ export const defaultAppConfig: AppConfig = {
   webhook_url: null,
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type BotConfig = any;
 
 export type AllConfig = AppConfig | BotConfig;

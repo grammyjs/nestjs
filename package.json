@@ -79,7 +79,7 @@
   ],
   "lint-staged": {
     "*.{js,json,css,scss,md,ts,html,graphql}": [
-      "nx affected:lint --fix --uncommitted"
+      "nx affected:lint --fix --files"
     ]
   },
   "repository": "grammyjs/nestjs"

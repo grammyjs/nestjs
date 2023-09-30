@@ -43,6 +43,7 @@ export class FirestoreUtils {
 
   async getAppConfig(): Promise<AppConfig> {
     return this._getDoc<AppConfig>(
+      // eslint-disable-next-line
       this.configCollection().doc(APP_CONFIG_ID),
       defaultAppConfig,
     );
