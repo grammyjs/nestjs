@@ -78,7 +78,7 @@
     "telegram bot api"
   ],
   "lint-staged": {
-    "*.{js,json,css,scss,md,ts,html,graphql}": [
+    "*.{js,css,scss,md,ts,html,graphql}": [
       "nx affected:lint --fix --files"
     ]
   },

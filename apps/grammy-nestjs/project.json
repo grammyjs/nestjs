@@ -24,8 +24,8 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "grammy-nestjs/**/*.ts",
-          "grammy-nestjs/package.json"
+          "apps/grammy-nestjs/**/*.ts",
+          "apps/grammy-nestjs/package.json"
         ]
       }
     },
