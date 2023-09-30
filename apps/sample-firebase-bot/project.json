@@ -1,0 +1,64 @@
+{
+  "name": "sample-firebase-bot",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/sample-firebase-bot/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/sample-firebase-bot",
+        "main": "apps/sample-firebase-bot/src/main.ts",
+        "tsConfig": "apps/sample-firebase-bot/tsconfig.app.json",
+        "assets": ["apps/sample-firebase-bot/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/sample-firebase-bot/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "sample-firebase-bot:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "sample-firebase-bot:build:development"
+        },
+        "production": {
+          "buildTarget": "sample-firebase-bot:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/sample-firebase-bot/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/sample-firebase-bot/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

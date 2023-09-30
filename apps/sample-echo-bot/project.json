@@ -1,0 +1,64 @@
+{
+  "name": "sample-echo-bot",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/sample-echo-bot/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/sample-echo-bot",
+        "main": "apps/sample-echo-bot/src/main.ts",
+        "tsConfig": "apps/sample-echo-bot/tsconfig.app.json",
+        "assets": ["apps/sample-echo-bot/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/sample-echo-bot/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "sample-echo-bot:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "sample-echo-bot:build:development"
+        },
+        "production": {
+          "buildTarget": "sample-echo-bot:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/sample-echo-bot/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/sample-echo-bot/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
