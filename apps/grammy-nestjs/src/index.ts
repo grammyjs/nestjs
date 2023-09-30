@@ -1,5 +1,4 @@
 export * from './nestjs-grammy.constants';
-export * from './nestjs-grammy-core.module';
 export * from './nestjs-grammy.module';
 export * from './decorators';
 export * from './enums';

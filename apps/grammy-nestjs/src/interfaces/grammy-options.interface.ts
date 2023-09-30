@@ -1,28 +1,13 @@
-import { ModuleMetadata, Type } from '@nestjs/common/interfaces';
 import { Middleware, BotConfig, PollingOptions } from 'grammy';
+import { Context } from 'grammy/out/context';
 
-export interface GrammyModuleOptions {
+export interface GrammyModuleOptions<C extends Context = any> {
   token: string;
   botName?: string;
-  options?: Partial<BotConfig<any>>;
+  options?: Partial<BotConfig<C>>;
   pollingOptions?: PollingOptions | false;
   useWebhook?: boolean;
   // eslint-disable-next-line @typescript-eslint/ban-types
   include?: Function[];
-  middlewares?: ReadonlyArray<Middleware<any>>;
-}
-
-export interface GrammyOptionsFactory {
-  createGrammyOptions(): Promise<GrammyModuleOptions> | GrammyModuleOptions;
-}
-
-export interface GrammyModuleAsyncOptions
-  extends Pick<ModuleMetadata, 'imports'> {
-  botName?: string;
-  useExisting?: Type<GrammyOptionsFactory>;
-  useClass?: Type<GrammyOptionsFactory>;
-  useFactory?: (
-    ...args: any[]
-  ) => Promise<GrammyModuleOptions> | GrammyModuleOptions;
-  inject?: any[];
+  middlewares?: ReadonlyArray<Middleware<C>>;
 }

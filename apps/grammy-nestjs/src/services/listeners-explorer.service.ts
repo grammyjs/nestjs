@@ -11,12 +11,12 @@ import { MetadataAccessorService } from './metadata-accessor.service';
 import {
   PARAM_ARGS_METADATA,
   GRAMMY_BOT_NAME,
-  GRAMMY_MODULE_OPTIONS,
 } from '../nestjs-grammy.constants';
 import { BaseExplorerService } from './base-explorer.service';
 import { GrammyParamsFactory } from '../factories/grammy-params-factory';
 import { GrammyContextType } from '../execution-context';
 import { ListenerMetadata, GrammyModuleOptions } from '../interfaces';
+import { GRAMMY_MODULE_OPTIONS } from '../nestjs-grammy.module-definition';
 
 const logger = new Logger('nestjs-grammy:listeners-explorer.service');
 
@@ -43,7 +43,7 @@ export class ListenersExplorerService
     super();
   }
 
-  onModuleInit(): void {
+  async onModuleInit() {
     this.bot = this.moduleRef.get<Bot<any>>(this.botName, {
       strict: false,
     });
@@ -52,7 +52,7 @@ export class ListenersExplorerService
 
     if (!this.grammyOptions.useWebhook) {
       logger.debug('pollingOptions: ', this.grammyOptions.pollingOptions);
-      this.bot.start(this.grammyOptions.pollingOptions || {});
+      await this.bot.start(this.grammyOptions.pollingOptions || {});
     }
   }
 
