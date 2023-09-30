@@ -21,13 +21,12 @@ export class FirebaseCommandController {
   }
 
   @Put('/:action')
-  async putSomething(@Param('action') action: string): Promise<void> {
+  putSomething(@Param('action') action: string) {
     logger.log(`Received ${action}`);
 
     // TODO: authorize
-    switch (action) {
-      case 'show':
-        return this.appService.showBot();
+    if (action === 'show') {
+      return this.appService.showBot();
     }
   }
 }

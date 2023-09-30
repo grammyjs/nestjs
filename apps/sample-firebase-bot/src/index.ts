@@ -23,6 +23,7 @@ if (!BOT_INFO) throw new Error(`Cannot start: No BOT_INFO in environment`);
 
 const expressServer = express();
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 export const command = functions.https.onRequest(async (request, response) => {
   logger.debug('Starting to create the CommandModule function');
   const app = await NestFactory.create(
@@ -33,6 +34,7 @@ export const command = functions.https.onRequest(async (request, response) => {
   expressServer(request, response);
 });
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 export const webhook = functions.https.onRequest(async (request, response) => {
   logger.debug('Starting to create the WebhookModule function');
   const app = await NestFactory.create(

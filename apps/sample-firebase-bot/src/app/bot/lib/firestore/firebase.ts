@@ -23,6 +23,8 @@ const params = {
 
 export const defaultProject = initializeApp(params);
 
-export const adminProject = admin.initializeApp(functions.config().firebase);
+export const adminProject = admin.initializeApp(
+  functions.config().firebase as admin.AppOptions,
+);
 
 export const db = adminProject.firestore();

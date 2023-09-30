@@ -5,10 +5,8 @@
   "scripts": {
     "lint:fix": "nx affected:lint --fix",
     "lint": "nx run-many --all --target=lint",
-    "posttest": "yarn lint:fix",
     "prepare": "husky install",
     "test": "nx test",
-    "pretest": "yarn lint",
     "publish:version": "nx run grammy-nestjs:version",
     "publish:npm": "nx run grammy-nestjs:deploy --no-build"
   },
