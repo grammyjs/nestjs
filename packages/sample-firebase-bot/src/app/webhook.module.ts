@@ -1,8 +1,8 @@
-import { NestjsGrammyModule } from '@grammyjs/nestjs'
-import { Module } from '@nestjs/common'
+import { NestjsGrammyModule } from '@grammyjs/nestjs';
+import { Module } from '@nestjs/common';
 
-import { FirebaseBotName } from './bot/bot.constants'
-import { FirebaseWebhookModule } from './bot/webhook.module'
+import { FirebaseBotName } from './bot/bot.constants';
+import { FirebaseWebhookModule } from './bot/webhook.module';
 
 @Module({
   imports: [

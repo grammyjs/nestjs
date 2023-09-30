@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -67,7 +67,9 @@
       }
       #message,
       #message a {
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        box-shadow:
+          0 1px 3px rgba(0, 0, 0, 0.12),
+          0 1px 2px rgba(0, 0, 0, 0.24);
       }
       #load {
         color: rgba(0, 0, 0, 0.4);
@@ -92,15 +94,18 @@
       <h2>Welcome</h2>
       <h1>Firebase Hosting Setup Complete</h1>
       <p>
-        You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!
+        You're seeing this because you've successfully setup Firebase Hosting.
+        Now it's time to go build something extraordinary!
       </p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+      <a target="_blank" href="https://firebase.google.com/docs/hosting/"
+        >Open Hosting Documentation</a
+      >
     </div>
     <p id="load">Firebase SDK Loading&hellip;</p>
 
     <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const loadEl = document.querySelector('#load')
+      document.addEventListener("DOMContentLoaded", function () {
+        const loadEl = document.querySelector("#load");
         // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
         // // The Firebase SDK is initialized and available here!
         //
@@ -117,24 +122,27 @@
         // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
         try {
-          let app = firebase.app()
+          let app = firebase.app();
           let features = [
-            'auth',
-            'database',
-            'firestore',
-            'functions',
-            'messaging',
-            'storage',
-            'analytics',
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function')
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`
+            "auth",
+            "database",
+            "firestore",
+            "functions",
+            "messaging",
+            "storage",
+            "analytics",
+            "remoteConfig",
+            "performance",
+          ].filter((feature) => typeof app[feature] === "function");
+          loadEl.textContent = `Firebase SDK loaded with ${features.join(
+            ", ",
+          )}`;
         } catch (e) {
-          console.error(e)
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.'
+          console.error(e);
+          loadEl.textContent =
+            "Error loading the Firebase SDK, check the console.";
         }
-      })
+      });
     </script>
   </body>
 </html>

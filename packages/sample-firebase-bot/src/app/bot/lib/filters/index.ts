@@ -1,3 +1,3 @@
 // Auto generated from bmakeIndex script
 
-export * from './grammy-exception.filter'
+export * from './grammy-exception.filter';

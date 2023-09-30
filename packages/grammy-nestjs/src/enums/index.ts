@@ -1,1 +1,1 @@
-export * from './grammy-paramtype.enum'
+export * from './grammy-paramtype.enum';

@@ -1,6 +1,6 @@
-import { Module, DynamicModule } from '@nestjs/common'
-import { GrammyCoreModule } from './nestjs-grammy-core.module'
-import { GrammyModuleOptions, GrammyModuleAsyncOptions } from './interfaces'
+import { Module, DynamicModule } from '@nestjs/common';
+import { GrammyCoreModule } from './nestjs-grammy-core.module';
+import { GrammyModuleOptions, GrammyModuleAsyncOptions } from './interfaces';
 
 @Module({
   controllers: [],
@@ -13,7 +13,7 @@ export class NestjsGrammyModule {
       module: NestjsGrammyModule,
       imports: [GrammyCoreModule.forRoot(options)],
       exports: [GrammyCoreModule],
-    }
+    };
   }
 
   public static forRootAsync(options: GrammyModuleAsyncOptions): DynamicModule {
@@ -21,6 +21,6 @@ export class NestjsGrammyModule {
       module: NestjsGrammyModule,
       imports: [GrammyCoreModule.forRootAsync(options)],
       exports: [GrammyCoreModule],
-    }
+    };
   }
 }

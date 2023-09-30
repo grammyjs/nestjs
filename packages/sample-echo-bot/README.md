@@ -6,11 +6,11 @@
 
 To test out this repo:
 
--   Clone the repo
--   Run `yarn install`
--   Change into this sample folder via `cd packages/sample-echo-bot`
--   Copy `.env.example` to `.env` and fill in with the appropriate information (leave `BOT_INFO` blank at first -- you will see a debug log showing how to fill it out in the future)
--   Run:
+- Clone the repo
+- Run `yarn install`
+- Change into this sample folder via `cd packages/sample-echo-bot`
+- Copy `.env.example` to `.env` and fill in with the appropriate information (leave `BOT_INFO` blank at first -- you will see a debug log showing how to fill it out in the future)
+- Run:
 
 ```sh
 DEBUG=bot:*,nestjs-grammy:* nx run sample-echo-bot:serve

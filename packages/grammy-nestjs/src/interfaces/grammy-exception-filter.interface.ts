@@ -1,5 +1,5 @@
-import { ArgumentsHost } from '@nestjs/common'
+import { ArgumentsHost } from '@nestjs/common';
 
 export interface GrammyExceptionFilter<T = any> {
-  catch(exception: T, host: ArgumentsHost): any
+  catch(exception: T, host: ArgumentsHost): any;
 }

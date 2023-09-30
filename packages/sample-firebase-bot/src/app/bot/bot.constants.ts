@@ -1,1 +1,1 @@
-export const FirebaseBotName = 'FirebaseBot'
+export const FirebaseBotName = 'FirebaseBot';

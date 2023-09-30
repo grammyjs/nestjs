@@ -1,1 +1,1 @@
-export * from './reverse-text.pipe'
+export * from './reverse-text.pipe';

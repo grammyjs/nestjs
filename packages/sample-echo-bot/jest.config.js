@@ -1,15 +1,15 @@
 module.exports = {
-  displayName: 'sample-echo-bot',
-  preset: '../../jest.preset.js',
+  displayName: "sample-echo-bot",
+  preset: "../../jest.preset.js",
   globals: {
-    'ts-jest': {
-      tsconfig: '<rootDir>/tsconfig.spec.json',
+    "ts-jest": {
+      tsconfig: "<rootDir>/tsconfig.spec.json",
     },
   },
-  testEnvironment: 'node',
+  testEnvironment: "node",
   transform: {
-    '^.+\\.[tj]s$': 'ts-jest',
+    "^.+\\.[tj]s$": "ts-jest",
   },
-  moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/packages/sample-echo-bot',
-}
+  moduleFileExtensions: ["ts", "js", "html"],
+  coverageDirectory: "../../coverage/packages/sample-echo-bot",
+};

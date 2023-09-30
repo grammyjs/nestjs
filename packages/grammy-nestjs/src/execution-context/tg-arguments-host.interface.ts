@@ -1,6 +1,6 @@
-import { ArgumentsHost } from '@nestjs/common'
+import { ArgumentsHost } from '@nestjs/common';
 
 export interface TgArgumentsHost extends ArgumentsHost {
-  getContext<T = any>(): T
-  getNext<T = any>(): T
+  getContext<T = any>(): T;
+  getNext<T = any>(): T;
 }

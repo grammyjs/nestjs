@@ -1,3 +1,3 @@
 // Auto generated from bmakeIndex script
 
-export * from './admin.guard'
+export * from './admin.guard';

@@ -1,3 +1,3 @@
-import { createComposerDecorator } from '../../utils/create-composer-decorator.util'
+import { createComposerDecorator } from '../../utils/create-composer-decorator.util';
 
-export const Drop = createComposerDecorator('drop')
+export const Drop = createComposerDecorator('drop');

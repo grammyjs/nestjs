@@ -1,15 +1,15 @@
-import { InjectBot } from '@grammyjs/nestjs'
-import { Module } from '@nestjs/common'
-import debug from 'debug'
-import { Bot, Context } from 'grammy'
+import { InjectBot } from '@grammyjs/nestjs';
+import { Module } from '@nestjs/common';
+import debug from 'debug';
+import { Bot, Context } from 'grammy';
 
-import { FirebaseBotName } from './bot.constants'
-import { FirebaseBotService } from './bot.service'
-import { FirebaseCommandController } from './command.controller'
-import { ResponseTime } from './lib'
-import { FirestoreService } from './lib/firestore/firestore.service'
+import { FirebaseBotName } from './bot.constants';
+import { FirebaseBotService } from './bot.service';
+import { FirebaseCommandController } from './command.controller';
+import { ResponseTime } from './lib';
+import { FirestoreService } from './lib/firestore/firestore.service';
 
-const log = debug('bot:firebase-bot.module')
+const log = debug('bot:firebase-bot.module');
 
 @Module({
   controllers: [FirebaseCommandController],
@@ -21,7 +21,7 @@ export class FirebaseCommandModule {
     @InjectBot(FirebaseBotName)
     private readonly bot: Bot<Context>,
   ) {
-    log(`FirebaseBotModule created`)
-    bot.use(ResponseTime)
+    log(`FirebaseBotModule created`);
+    bot.use(ResponseTime);
   }
 }

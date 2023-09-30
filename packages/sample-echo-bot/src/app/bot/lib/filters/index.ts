@@ -1,1 +1,1 @@
-export * from './grammy-exception.filter'
+export * from './grammy-exception.filter';

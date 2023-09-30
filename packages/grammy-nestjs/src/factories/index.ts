@@ -1,1 +1,1 @@
-export * from './grammy-params-factory'
+export * from './grammy-params-factory';

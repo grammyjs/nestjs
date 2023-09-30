@@ -1,3 +1,3 @@
-import { createComposerDecorator } from '../../utils/create-composer-decorator.util'
+import { createComposerDecorator } from '../../utils/create-composer-decorator.util';
 
-export const ChatType = createComposerDecorator('chatType')
+export const ChatType = createComposerDecorator('chatType');

@@ -1,8 +1,8 @@
-import { Injectable, PipeTransform } from '@nestjs/common'
+import { Injectable, PipeTransform } from '@nestjs/common';
 
 @Injectable()
 export class ReverseTextPipe implements PipeTransform {
   transform(value: string): string {
-    return value.split('').reverse().join('')
+    return value.split('').reverse().join('');
   }
 }

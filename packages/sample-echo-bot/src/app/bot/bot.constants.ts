@@ -1,1 +1,1 @@
-export const EchoBotName = 'MyGrammyTest'
+export const EchoBotName = 'MyGrammyTest';

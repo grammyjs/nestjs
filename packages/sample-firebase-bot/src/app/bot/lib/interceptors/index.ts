@@ -1,3 +1,3 @@
 // Auto generated from bmakeIndex script
 
-export * from './response-time.interceptor'
+export * from './response-time.interceptor';

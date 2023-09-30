@@ -1,3 +1,3 @@
-import { session } from 'grammy'
+import { session } from 'grammy';
 
-export const sessionMiddleware = session()
+export const sessionMiddleware = session();
