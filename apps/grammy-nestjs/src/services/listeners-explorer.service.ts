@@ -27,7 +27,7 @@ export class ListenersExplorerService
 {
   private readonly grammyParamsFactory = new GrammyParamsFactory();
 
-  private bot: Bot<any>;
+  private bot!: Bot;
 
   constructor(
     @Inject(GRAMMY_MODULE_OPTIONS)
@@ -44,7 +44,7 @@ export class ListenersExplorerService
   }
 
   async onModuleInit() {
-    this.bot = this.moduleRef.get<Bot<any>>(this.botName, {
+    this.bot = this.moduleRef.get<Bot>(this.botName, {
       strict: false,
     });
 
@@ -72,7 +72,7 @@ export class ListenersExplorerService
     updates.forEach((wrapper) => this.registerListeners(this.bot, wrapper));
   }
 
-  private filterUpdates(wrapper: InstanceWrapper): InstanceWrapper<unknown> {
+  private filterUpdates(wrapper: InstanceWrapper): undefined | InstanceWrapper {
     const { instance } = wrapper;
     if (!instance) return undefined;
 
@@ -128,7 +128,7 @@ export class ListenersExplorerService
 
   createContextCallback<T extends Record<string, unknown>>(
     instance: T,
-    prototype: unknown,
+    prototype: any,
     methodName: string,
   ) {
     const paramsFactory = this.grammyParamsFactory;

@@ -1,7 +1,7 @@
 import { ParamData } from '@nestjs/common';
 import { ParamsFactory } from '@nestjs/core/helpers/external-context-creator';
 import { Context } from 'grammy';
-import { GrammyParamtype } from '../enums/grammy-paramtype.enum';
+import { GrammyParamtype } from '../enums';
 
 export class GrammyParamsFactory implements ParamsFactory {
   exchangeKeyForValue(

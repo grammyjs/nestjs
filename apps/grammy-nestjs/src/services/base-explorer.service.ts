@@ -9,26 +9,21 @@ export class BaseExplorerService {
     modulesContainer: Map<string, Module>,
     include: Function[],
   ): Module[] {
-    if (!include || isEmpty(include)) {
-      return [...modulesContainer.values()];
-    }
-
-    return this.includeWhitelisted(modulesContainer, include);
-  }
-
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  includeWhitelisted(
-    modulesContainer: Map<string, Module>,
-    include: Function[],
-  ): Module[] {
     const modules = [...modulesContainer.values()];
 
-    return modules.filter(({ metatype }) => include.includes(metatype));
+    if (isEmpty(include)) {
+      return modules;
+    }
+
+    return modules.filter((module) => include.includes(module.metatype));
   }
 
   flatMap<T>(
     modules: Module[],
-    callback: (instance: InstanceWrapper, moduleRef: Module) => T | T[],
+    callback: (
+      instance: InstanceWrapper,
+      moduleRef: Module,
+    ) => T | T[] | undefined,
   ): T[] {
     const visitedModules = new Set<Module>();
 
@@ -49,7 +44,7 @@ export class BaseExplorerService {
           }, [])
         : [];
 
-      return [...defined, ...imported];
+      return [...defined.filter(Boolean), ...imported];
     };
 
     return flattenDeep(modules.map(unwrap)).filter(identity);

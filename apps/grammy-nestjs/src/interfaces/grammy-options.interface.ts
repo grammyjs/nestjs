@@ -1,10 +1,9 @@
-import { Middleware, BotConfig, PollingOptions } from 'grammy';
-import { Context } from 'grammy/out/context';
+import { Middleware, BotConfig, PollingOptions, Context } from 'grammy';
 
-export interface GrammyModuleOptions<C extends Context = any> {
+export interface GrammyModuleOptions<C extends Context = Context> {
   token: string;
   botName?: string;
-  options?: Partial<BotConfig<C>>;
+  options?: BotConfig<C>;
   pollingOptions?: PollingOptions | false;
   useWebhook?: boolean;
   // eslint-disable-next-line @typescript-eslint/ban-types

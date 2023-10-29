@@ -16,25 +16,25 @@ export function createBotDecorator<
     search?: FilterQuery | StringOrRegexQuery,
     ...args: ComposerMethodArgs<TComposer, TSearch>
   ): MethodDecorator => {
-    return (
-      _target: any,
-      _key?: string | symbol,
-      descriptor?: TypedPropertyDescriptor<any>,
-    ) => {
-      const metadata = [
-        {
-          method: method || search,
-          args,
-          emitter,
-        } as ListenerMetadata,
-      ];
+    return (_target, _propertyKey, descriptor) => {
+      const newMethod = method || search;
 
-      const previousValue =
+      if (!newMethod) {
+        throw new Error(
+          `You must provide a method name or a search query for '${emitter}`,
+        );
+      }
+
+      const metadata: ListenerMetadata = {
+        method: newMethod,
+        args,
+        emitter,
+      };
+
+      const previousValue: ListenerMetadata[] =
         Reflect.getMetadata(LISTENERS_METADATA, descriptor.value) || [];
-      const value = [...previousValue, ...metadata];
+      const value = [...previousValue, metadata];
       Reflect.defineMetadata(LISTENERS_METADATA, value, descriptor.value);
-
-      return descriptor;
     };
   };
 }

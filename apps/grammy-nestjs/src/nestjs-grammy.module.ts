@@ -16,7 +16,8 @@ import {
 import { ListenersExplorerService, MetadataAccessorService } from './services';
 import { GRAMMY_BOT_NAME } from './nestjs-grammy.constants';
 import { DiscoveryModule, ModuleRef } from '@nestjs/core';
-import { createBotFactory, getBotName } from './utils';
+import { getBotName } from './utils';
+import { createBotFactory } from './utils/create-bot-factory.util';
 import { GrammyModuleOptions } from './interfaces';
 import { Bot } from 'grammy';
 

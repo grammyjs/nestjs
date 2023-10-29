@@ -1,6 +1,5 @@
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { GrammyExecutionContext, GrammyException } from '@grammyjs/nestjs';
-import { Context } from 'grammy';
 
 @Injectable()
 export class AdminGuard implements CanActivate {
@@ -8,7 +7,7 @@ export class AdminGuard implements CanActivate {
 
   canActivate(context: ExecutionContext): boolean {
     const ctx = GrammyExecutionContext.create(context);
-    const { from } = ctx.getContext<Context>();
+    const { from } = ctx.getContext();
 
     const isAdmin = this.ADMIN_IDS.includes(from.id);
 

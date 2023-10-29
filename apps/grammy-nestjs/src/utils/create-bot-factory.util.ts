@@ -1,17 +1,16 @@
-import { Bot } from 'grammy';
+import { Bot, Context } from 'grammy';
 import { GrammyModuleOptions } from '../interfaces';
 import { Logger } from '@nestjs/common';
-import { Context } from 'grammy/out/context';
 
 const logger = new Logger('nestjs-grammy:create-bot-factory.util');
 
 export async function createBotFactory<C extends Context = Context>(
-  options: GrammyModuleOptions,
+  moduleOptions: GrammyModuleOptions<C>,
 ): Promise<Bot<C>> {
-  const bot = new Bot<C>(options.token, options.options);
+  const bot = new Bot<C>(moduleOptions.token, moduleOptions.options);
 
-  if (options.middlewares) {
-    bot.use(...options.middlewares);
+  if (moduleOptions.middlewares) {
+    bot.use(...moduleOptions.middlewares);
   }
 
   if (!bot.isInited()) {
@@ -20,9 +19,11 @@ export async function createBotFactory<C extends Context = Context>(
     logger.debug(`export BOT_INFO='${JSON.stringify(bot.botInfo)}'`);
     logger.debug(`(and in forRoot():)`);
     logger.debug(`options: {botInfo: JSON.parse(process.env.BOT_INFO)},`);
+  } else {
+    logger.debug(`bot.isInited() is true`);
   }
 
-  logger.debug(`createBotFactory creating bot: `, options.botName);
+  logger.debug(`createBotFactory creating bot: `, moduleOptions.botName);
 
   return bot;
 }

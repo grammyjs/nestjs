@@ -1,6 +1,7 @@
 import { ContextType, ExecutionContext } from '@nestjs/common';
 import { ExecutionContextHost } from '@nestjs/core/helpers/execution-context-host';
 import { TgArgumentsHost } from './tg-arguments-host.interface';
+import { Context } from 'grammy';
 
 export type GrammyContextType = 'grammy' | ContextType;
 
@@ -20,11 +21,11 @@ export class GrammyExecutionContext
     return tgContext;
   }
 
-  getType<TContext extends string = GrammyContextType>(): TContext {
+  override getType<TContext extends string = GrammyContextType>(): TContext {
     return super.getType();
   }
 
-  getContext<T = any>(): T {
+  getContext<T extends Context = Context>(): T {
     return this.getArgByIndex(0);
   }
 
