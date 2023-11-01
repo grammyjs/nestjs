@@ -3,6 +3,6 @@ import { createBotDecorator } from '../../utils';
 /**
  * Handler for /start command.
  *
- * @see https://telegraf.js.org/#/?id=start
+ * @see https://grammy.dev/guide/commands#usage
  */
 export const Start = createBotDecorator('command', 'start');

@@ -3,6 +3,6 @@ import { createBotDecorator } from '../../utils';
 /**
  * Handler for /settings command.
  *
- * @see https://telegraf.js.org/#/?id=settings
+ * @see https://grammy.dev/guide/commands#usage
  */
 export const Settings = createBotDecorator('command', 'settings');

@@ -3,6 +3,6 @@ import { createBotDecorator } from '../../utils';
 /**
  * Registers middleware for provided update type.
  *
- * @see https://telegraf.js.org/#/?id=on
+ * @see https://grammy.dev/guide/filter-queries#filter-queries-and-bot-on
  */
 export const On = createBotDecorator('on');
