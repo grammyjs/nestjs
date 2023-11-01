@@ -48,3 +48,5 @@ firebase*.json
 .firebaserc
 log/
 firebase-export*
+
+.yarn/*
