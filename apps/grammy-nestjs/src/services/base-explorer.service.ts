@@ -1,17 +1,18 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import { InstanceWrapper } from '@nestjs/core/injector/instance-wrapper';
 import { Module } from '@nestjs/core/injector/module';
-import { flattenDeep, identity, isEmpty } from 'lodash';
+import { flattenDeep, identity } from 'lodash';
+import { ModulesContainer } from '@nestjs/core';
 
 export class BaseExplorerService {
   // eslint-disable-next-line @typescript-eslint/ban-types
   getModules(
-    modulesContainer: Map<string, Module>,
-    include: Function[],
+    modulesContainer: ModulesContainer,
+    include?: Function[],
   ): Module[] {
     const modules = [...modulesContainer.values()];
 
-    if (isEmpty(include)) {
+    if (!include?.length) {
       return modules;
     }
 
@@ -20,33 +21,34 @@ export class BaseExplorerService {
 
   flatMap<T>(
     modules: Module[],
-    callback: (
-      instance: InstanceWrapper,
-      moduleRef: Module,
-    ) => T | T[] | undefined,
+    callback: (instance: InstanceWrapper, moduleRef: Module) => T | undefined,
   ): T[] {
     const visitedModules = new Set<Module>();
 
-    const unwrap = (moduleRef: Module) => {
+    const unwrap = (module: Module): T[] => {
       // protection from circular recursion
-      if (visitedModules.has(moduleRef)) {
+      if (visitedModules.has(module)) {
         return [];
       } else {
-        visitedModules.add(moduleRef);
+        visitedModules.add(module);
       }
 
-      const providers = [...moduleRef.providers.values()];
-      const defined = providers.map((wrapper) => callback(wrapper, moduleRef));
+      const providers = [...module.providers.values()];
+      const defined = providers
+        .map((wrapper) => callback(wrapper, module))
+        .filter((item) => Boolean(item));
 
-      const imported: (T | T[])[] = moduleRef.imports?.size
-        ? [...moduleRef.imports.values()].reduce((prev, cur) => {
-            return [...prev, ...unwrap(cur)];
-          }, [])
-        : [];
+      const imported: T[] = [];
 
-      return [...defined.filter(Boolean), ...imported];
+      for (const m of module.imports) {
+        imported.push(...unwrap(m));
+      }
+
+      return [...defined, ...imported] as T[];
     };
 
-    return flattenDeep(modules.map(unwrap)).filter(identity);
+    return flattenDeep(modules.map((module) => unwrap(module))).filter(
+      identity,
+    );
   }
 }

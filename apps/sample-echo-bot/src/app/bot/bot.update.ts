@@ -29,7 +29,10 @@ const logger = new Logger('bot:echo.update');
 @UseInterceptors(ResponseTimeInterceptor)
 @UseFilters(GrammyExceptionFilter)
 export class EchoUpdate {
-  private readonly inlineKeyboard: InlineKeyboard;
+  private readonly inlineKeyboard = new InlineKeyboard().text(
+    'click',
+    'click-payload',
+  );
 
   constructor(
     @InjectBot(EchoBotName)
@@ -39,8 +42,6 @@ export class EchoUpdate {
       `Initializing`,
       bot.isInited() ? bot.botInfo.first_name : '(pending)',
     );
-
-    this.inlineKeyboard = new InlineKeyboard().text('click', 'click-payload');
   }
 
   @Start()

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import { assignMetadata, PipeTransform, Type } from '@nestjs/common';
 import { isNil, isString } from '@nestjs/common/utils/shared.utils';
 import { GrammyParamtype } from '../enums/grammy-paramtype.enum';
@@ -11,12 +12,13 @@ export const createGrammyParamDecorator = (paramtype: GrammyParamtype) => {
       // TODO: refactor remove linter disable
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const args =
-        Reflect.getMetadata(PARAM_ARGS_METADATA, target.constructor, key) || {};
+        Reflect.getMetadata(PARAM_ARGS_METADATA, target.constructor, key!) ||
+        {};
       Reflect.defineMetadata(
         PARAM_ARGS_METADATA,
         assignMetadata(args, paramtype, index, data),
         target.constructor,
-        key,
+        key!,
       );
     };
 };
@@ -28,7 +30,7 @@ export const createGrammyPipesParamDecorator =
     ...pipes: (Type<PipeTransform> | PipeTransform)[]
   ): ParameterDecorator =>
   (target, key, index) => {
-    addPipesMetadata(paramtype, data, pipes, target, key, index);
+    addPipesMetadata(paramtype, data, pipes, target, key!, index);
   };
 
 export const addPipesMetadata = (
@@ -53,7 +55,7 @@ export const addPipesMetadata = (
 
   Reflect.defineMetadata(
     PARAM_ARGS_METADATA,
-    assignMetadata(args, paramtype, index, paramData, ...paramPipes),
+    assignMetadata(args, paramtype, index, paramData!, ...paramPipes),
     target.constructor,
     key,
   );

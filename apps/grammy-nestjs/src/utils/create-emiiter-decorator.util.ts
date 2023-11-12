@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import { Composer, FilterQuery } from 'grammy';
 import {
   ComposerMethodArgs,
@@ -32,9 +33,9 @@ export function createBotDecorator<
       };
 
       const previousValue: ListenerMetadata[] =
-        Reflect.getMetadata(LISTENERS_METADATA, descriptor.value) || [];
+        Reflect.getMetadata(LISTENERS_METADATA, descriptor.value!) || [];
       const value = [...previousValue, metadata];
-      Reflect.defineMetadata(LISTENERS_METADATA, value, descriptor.value);
+      Reflect.defineMetadata(LISTENERS_METADATA, value, descriptor.value!);
     };
   };
 }

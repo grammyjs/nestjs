@@ -1,12 +1,13 @@
-import { ParamData } from '@nestjs/common';
 import { ParamsFactory } from '@nestjs/core/helpers/external-context-creator';
 import { Context } from 'grammy';
 import { GrammyParamtype } from '../enums';
+import { User } from '@grammyjs/types/manage';
+import { Message } from 'grammy/out/types';
 
 export class GrammyParamsFactory implements ParamsFactory {
   exchangeKeyForValue(
     type: GrammyParamtype,
-    data: ParamData,
+    data: keyof User | keyof Message,
     args: unknown[],
   ): unknown {
     const ctx = args[0] as Context;
@@ -19,9 +20,11 @@ export class GrammyParamsFactory implements ParamsFactory {
       case GrammyParamtype.NEXT:
         return next;
       case GrammyParamtype.SENDER:
-        return data && ctx.from ? ctx.from[data as string] : ctx.from;
+        return data && ctx.from ? ctx.from[data as keyof User] : ctx.from;
       case GrammyParamtype.MESSAGE:
-        return data && ctx.message ? ctx.message[data as string] : ctx.message;
+        return data && ctx.message
+          ? ctx.message[data as keyof Message]
+          : ctx.message;
       default:
         return null;
     }

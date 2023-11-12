@@ -7,6 +7,7 @@
     "lint": "nx run-many --all --target=lint",
     "prepare": "husky install",
     "test": "nx test",
+    "sample-echo-bot:serve": "nx run sample-echo-bot:serve",
     "publish:version": "nx run grammy-nestjs:version",
     "publish:npm": "nx run grammy-nestjs:deploy --no-build"
   },

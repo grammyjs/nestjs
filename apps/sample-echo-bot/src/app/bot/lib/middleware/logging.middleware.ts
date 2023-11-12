@@ -1,4 +1,4 @@
-import { MiddlewareFn } from 'grammy/out/composer';
+import { MiddlewareFn } from 'grammy';
 import { Logger } from '@nestjs/common';
 
 const logger = new Logger('bot:logging.middleware');

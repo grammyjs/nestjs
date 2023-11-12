@@ -50,3 +50,4 @@ log/
 firebase-export*
 
 .yarn/*
+.history

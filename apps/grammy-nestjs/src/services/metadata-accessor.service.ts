@@ -22,7 +22,7 @@ export class MetadataAccessorService {
     return this.reflector.get(LISTENERS_METADATA, target);
   }
 
-  getComposerMetadata(target: Function): ComposerMetadata[] | undefined {
+  getBotMetadata(target: Function): ComposerMetadata[] | undefined {
     return this.reflector.get(COMPOSER_METADATA, target);
   }
 }

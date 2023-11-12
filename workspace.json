@@ -1,8 +1,0 @@
-{
-  "version": 2,
-  "projects": {
-    "grammy-nestjs": "apps/grammy-nestjs",
-    "sample-echo-bot": "apps/sample-echo-bot",
-    "sample-firebase-bot": "apps/sample-firebase-bot"
-  }
-}
