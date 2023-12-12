@@ -1,0 +1,48 @@
+{
+  "name": "grammy-nestjs",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/grammy-nestjs/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/grammy-nestjs",
+        "tsConfig": "apps/grammy-nestjs/tsconfig.lib.json",
+        "packageJson": "apps/grammy-nestjs/package.json",
+        "main": "apps/grammy-nestjs/src/index.ts",
+        "assets": ["apps/grammy-nestjs/*.md"]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs grammy-nestjs {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/grammy-nestjs/**/*.ts",
+          "apps/grammy-nestjs/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/grammy-nestjs/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

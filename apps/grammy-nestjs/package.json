@@ -1,0 +1,39 @@
+{
+  "name": "@grammyjs/nestjs",
+  "version": "0.4.0",
+  "bugs": "https://github.com/grammyjs/nestjs/issues",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "homepage": "https://github.com/grammyjs/nestjs#README.md",
+  "keywords": [
+    "bot",
+    "bot api",
+    "bot framework",
+    "grammy",
+    "nest",
+    "nestjs",
+    "nestjs-module",
+    "telegram",
+    "telegram bot",
+    "telegram bot api"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^10.0.0",
+    "@nestjs/core": "^10.0.0",
+    "grammy": "^1.7.3"
+  },
+  "devDependencies": {
+    "@nestjs/common": "^10.0.0",
+    "@nestjs/core": "^10.0.0",
+    "grammy": "^1.7.3"
+  },
+  "repository": "grammyjs/nestjs",
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts"
+}

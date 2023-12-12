@@ -1,8 +1,8 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-/dist
-/tmp
+dist
+tmp
 /out-tsc
 
 # dependencies
@@ -37,6 +37,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
 .eslintcache
 
 .runtimeconfig.json
@@ -47,3 +48,6 @@ firebase*.json
 .firebaserc
 log/
 firebase-export*
+
+.yarn/*
+.history
