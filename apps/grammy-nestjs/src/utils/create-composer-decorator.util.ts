@@ -14,16 +14,16 @@ export function createComposerDecorator(
 
 export function createComposerDecorator(method: ComposerMetadata['method']) {
   return (arg: ComposerMetadata['arg']): MethodDecorator => {
-    return (target, key) => {
+    return (_target, _propertyKey, descriptor) => {
       const metadata = {
         method,
         arg,
       } as ComposerMetadata;
 
-      const prevValue: ComposerMetadata[] =
-        Reflect.getMetadata(COMPOSER_METADATA, target, key) || [];
-      const value = [...prevValue, metadata];
-      Reflect.defineMetadata(COMPOSER_METADATA, value, target, key);
+      const previousValue: ComposerMetadata[] =
+        Reflect.getMetadata(COMPOSER_METADATA, descriptor.value!) || [];
+      const value = [...previousValue, metadata];
+      Reflect.defineMetadata(COMPOSER_METADATA, value, descriptor.value!);
     };
   };
 }
