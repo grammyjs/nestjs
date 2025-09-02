@@ -4,6 +4,18 @@
 
 </div>
 
+> ⚠⚠⚠️ UNMAINTAINED ⚠⚠⚠
+>
+> Unfortunately, nobody who uses NestJS is excited enough about it to maintain this project.
+>
+> Also, none of the core grammY maintainers is interested in working with NestJS.
+> You can try to use this source code as-is, but do not expect any fixes (let alone new features).
+>
+> If you want to take over, you simply need to convince us that you will stay around for more than a few months.
+> We might then give you maintainer rights and remove this warning.
+>
+> Until then, you probably should integrate grammY yourself.
+
 # grammY port of NestJS Telegraf
 
 > :information_source: This project would not be possible without the help and assistance of [Aleksandr Bukhalo](https://t.me/bukhalo_a) and the fantastic [bukhalo/nestjs-telegraf](https://github.com/bukhalo/nestjs-telegraf) project.
