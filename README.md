@@ -4,8 +4,8 @@
 
 </div>
 
-> ⚠⚠⚠️ UNMAINTAINED ⚠⚠⚠
->
+# ⚠️⚠️⚠️ UNMAINTAINED ⚠️⚠️⚠️ 
+
 > Unfortunately, nobody who uses NestJS is excited enough about it to maintain this project.
 >
 > Also, none of the core grammY maintainers is interested in working with NestJS.
